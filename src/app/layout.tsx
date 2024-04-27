@@ -1,13 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import {MantineProvider} from '@mantine/core';
-import {Inter} from 'next/font/google';
+import {inter} from '../../public/assets/fonts';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
 
 export const metadata: Metadata = {
   title: 'Movie Searcher',
@@ -21,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={inter.className}>
         <MantineProvider>{children}</MantineProvider>
       </body>
