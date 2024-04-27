@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  /* height: 96.2vh; */
+  height: 2644px;
+}
+
+.right {
+  min-height: 100%;
+  width: 80.6vw;
+}

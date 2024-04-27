@@ -10,9 +10,29 @@
     "format": "npx prettier . --write"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.8.1",
+    "@mantine/charts": "^7.8.1",
+    "@mantine/code-highlight": "^7.8.1",
+    "@mantine/core": "^7.8.1",
+    "@mantine/dates": "^7.8.1",
+    "@mantine/dropzone": "^7.8.1",
+    "@mantine/form": "^7.8.1",
+    "@mantine/hooks": "^7.8.1",
+    "@mantine/modals": "^7.8.1",
+    "@mantine/notifications": "^7.8.1",
+    "@mantine/nprogress": "^7.8.1",
+    "@mantine/spotlight": "^7.8.1",
+    "@mantine/tiptap": "^7.8.1",
+    "@tabler/icons-react": "^3.2.0",
+    "@tiptap/extension-link": "^2.3.0",
+    "@tiptap/react": "^2.3.0",
+    "@tiptap/starter-kit": "^2.3.0",
+    "dayjs": "^1.11.10",
+    "embla-carousel-react": "^8.0.2",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "recharts": "^2.12.6"
   },
   "devDependencies": {
     "@types/node": "^20",
