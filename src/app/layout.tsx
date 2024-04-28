@@ -4,7 +4,6 @@ import {MantineProvider, createTheme} from '@mantine/core';
 import {inter} from '../../public/assets/fonts';
 import '@mantine/core/styles.css';
 
-
 export const metadata: Metadata = {
   title: 'Movie Searcher',
   description: 'Search your favorite movies',

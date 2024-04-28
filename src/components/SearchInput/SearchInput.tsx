@@ -6,7 +6,7 @@ import Image from 'next/image';
 export function SearchInput() {
   return (
     <Box className={style.inputWrapper}>
-      <Image src={searchImg} alt="search icon" className={style.image}/>
+      <Image src={searchImg} alt="search icon" className={style.image} />
       <input
         placeholder="Search movie title"
         className={style.searchInput}

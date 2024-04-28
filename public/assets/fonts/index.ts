@@ -1,2 +1,2 @@
-export {inter} from './Inter'
-export {poppins} from './Poppins'
+export {inter} from './Inter';
+export {poppins} from './Poppins';
