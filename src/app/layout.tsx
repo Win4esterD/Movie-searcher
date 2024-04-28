@@ -1,17 +1,14 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import {MantineProvider, createTheme} from '@mantine/core';
+import {MantineProvider} from '@mantine/core';
 import {inter} from '../../public/assets/fonts';
 import '@mantine/core/styles.css';
+import {theme} from '@/theme/theme';
 
 export const metadata: Metadata = {
   title: 'Movie Searcher',
   description: 'Search your favorite movies',
 };
-
-const theme = createTheme({
-  /** Your theme override here */
-});
 
 export default function RootLayout({
   children,

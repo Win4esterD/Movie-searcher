@@ -6,12 +6,12 @@
 
 .right {
   min-height: 100%;
-  width: 80.6vw;
+  width: 100%;
 }
 
 .searchContainer {
   display: flex;
-  margin-top: 2.5rem;
+  margin-top: 2.6rem;
   justify-content: space-between;
   max-width: 92.3%;
   padding-left: 5.7rem;
@@ -21,4 +21,18 @@
   font-size: 2rem;
   font-weight: 700;
   line-height: 140%;
+}
+
+.inputsSection {
+  width: 92%;
+  padding-left: 8%;
+  margin-top: 2.35rem;
+}
+
+.resetFilters {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #7b7c88;
+  margin-top: 2.6rem;
 }

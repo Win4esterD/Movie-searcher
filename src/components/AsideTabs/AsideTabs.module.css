@@ -1,6 +1,4 @@
 .tabsWrapper {
-  display: flex;
-  flex-direction: column;
   margin-top: 4.9rem;
   margin-left: 1.5rem;
   gap: 1.1rem;
