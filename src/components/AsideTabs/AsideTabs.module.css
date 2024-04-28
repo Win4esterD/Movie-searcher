@@ -8,6 +8,8 @@
 
 .tab {
   width: 14.5rem;
+  max-width: 95%;
+  margin-right: 1rem;
   height: 2.7rem;
   font-weight: 400;
   line-height: 140%;
