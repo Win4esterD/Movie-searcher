@@ -36,3 +36,10 @@
   color: #7b7c88;
   margin-top: 2.6rem;
 }
+
+.sortInputWrapper {
+  display: flex;
+  justify-content: end;
+  width: 92%;
+  margin-top: 1.6rem;
+}

@@ -13,7 +13,6 @@ export default function Home(): JSX.Element {
     <main>
       <Box className={style.container}>
         <Aside />
-        {/* <RightSection> */}
         <Box component="section" className={style.right}>
           <Box className={style.searchContainer}>
             <Box className={style.movies}>Movies</Box>
@@ -33,8 +32,10 @@ export default function Home(): JSX.Element {
               Reset filters
             </Box>
           </Flex>
+          <Box className={style.sortInputWrapper}>
+            <Dropdown label="Sort by" data={['Most popular']} />
+          </Box>
         </Box>
-        {/* </RightSection> */}
       </Box>
     </main>
   );
