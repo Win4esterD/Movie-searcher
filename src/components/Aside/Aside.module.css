@@ -1,0 +1,18 @@
+.aside {
+  background-color: var(--main-pink);
+  width: 19.4vw;
+  min-height: 100%;
+}
+
+.logoAndName {
+  display: flex;
+  margin-top: 1.6rem;
+  padding-left: 1.4rem;
+  gap: 0.75rem;
+}
+
+.companyName {
+  color: var(--main-purple);
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}

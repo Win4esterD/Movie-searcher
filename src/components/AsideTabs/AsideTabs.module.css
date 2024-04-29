@@ -1,0 +1,23 @@
+.tabsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.9rem;
+  margin-left: 1.5rem;
+  gap: 1.1rem;
+}
+
+.tab {
+  width: 14.5rem;
+  max-width: 95%;
+  margin-right: 1rem;
+  height: 2.7rem;
+  font-weight: 400;
+  line-height: 140%;
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 0.6rem;
+}
+
+.tab:hover {
+  cursor: pointer;
+}

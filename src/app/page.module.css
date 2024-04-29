@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  /* height: 96.2vh; */
+  height: 165.25rem;
+}
+
+.right {
+  min-height: 100%;
+  width: 80.6vw;
+}
+
+.searchContainer {
+  display: flex;
+  margin-top: 2.5rem;
+  justify-content: space-between;
+  max-width: 92.3%;
+  padding-left: 5.7rem;
+}
+
+.movies {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 140%;
+}
