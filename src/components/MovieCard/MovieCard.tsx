@@ -7,7 +7,7 @@ import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import {useDataFetcher} from '@/hooks';
 import {genresLink} from '@/services/urls';
-import {fetchGenres} from '@/services/fetchers';
+import {fetchData} from '@/services/client/fetchers';
 
 type MovieCardProps = {
   imgLink: string;
@@ -26,19 +26,22 @@ export function MovieCard({
   votes,
   genreIds,
 }: MovieCardProps): JSX.Element {
+  const link = window.location.origin + '/api/movies/genres/';
   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
-    genresLink,
-    fetchGenres,
+    link,
+    fetchData,
   );
 
-  const genresToRender = genres?.map(item => {
-    if (genreIds?.includes(item.id)) {
-      return item.name + ', ';
-    }
-  }).join('');
+  const genresToRender = genres
+    ?.map(item => {
+      if (genreIds?.includes(item.id)) {
+        return item.name + ', ';
+      }
+    })
+    .join('');
   return (
     <Box className={style.movieCard}>
-      <Image src={starUnliked} alt="Rate movie" className={style.rateMovie}/>
+      <Image src={starUnliked} alt="Rate movie" className={style.rateMovie} />
       <Flex className={style.contentWrapper} gap="1rem">
         <Image
           src={`${posterBaseLink}${imgLink}`}
@@ -54,7 +57,7 @@ export function MovieCard({
           <Flex className={style.movieStatistics}>
             <Image src={star} alt="Rating icon" width={23.3} height={22.16} />
             <Flex className={style.ratingAndVotes}>
-              <Text className={style.rating}>{rating}</Text>
+              <Text className={style.rating}>{rating.toFixed(1)}</Text>
               <Text className={style.votes}>({votes})</Text>
             </Flex>
           </Flex>

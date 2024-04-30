@@ -3,11 +3,13 @@ import {Box, Flex} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
 import {useDataFetcher} from '@/hooks';
-import {fetchMovies, baseUrl} from '@/services/';
+import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 
 export function MoviesSection() {
-  const movies = useDataFetcher(baseUrl, fetchMovies);
+  const link = window.location.origin + '/api/movies/';
+  const movies = useDataFetcher(link, fetchData);
+
   const results = movies?.results;
   return (
     <>

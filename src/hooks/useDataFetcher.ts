@@ -1,16 +1,16 @@
 import {useEffect, useState} from 'react';
 
 export function useDataFetcher(url: string, func: Function): any {
-  const [movies, setMovies] = useState();
+  const [data, setData] = useState();
 
   useEffect(() => {
     async function fetching() {
-      const movies = await func(url);
-      setMovies(movies);
+      const result = await func(url);
+      setData(result);
     }
 
     fetching();
   }, []);
 
-  return movies;
+  return data;
 }
