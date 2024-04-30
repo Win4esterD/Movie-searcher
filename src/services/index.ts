@@ -1,2 +1,3 @@
 export {baseUrl} from './urls';
-export {fetchMovies} from './fetchers';
+export {serveMovies} from './server/serverSideFetchers';
+export {fetchData} from './client/fetchers';

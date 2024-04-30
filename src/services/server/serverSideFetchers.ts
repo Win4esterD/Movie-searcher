@@ -1,6 +1,4 @@
-import {authKey} from './apiKey';
-
-export async function fetchMovies(url: string): Promise<any> {
+export async function serveMovies(url: string, authKey: string): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -16,7 +14,7 @@ export async function fetchMovies(url: string): Promise<any> {
   }
 }
 
-export async function fetchGenres(url: string): Promise<any> {
+export async function serveGenres(url: string, authKey: string): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'GET',
