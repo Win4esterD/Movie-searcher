@@ -5,11 +5,18 @@ import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
 import {useDataFetcher} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
+import { useEffect, useState } from 'react';
+
 
 export function MoviesSection() {
-  const link = window.location.origin + '/api/movies/';
-  const movies = useDataFetcher(link, fetchData);
+  // const link = location?.origin + '/api/movies/';
+  const [link, setLink] = useState('');
+  
+  useEffect(() => {
+    setLink(location?.origin + '/api/movies/');
+  })
 
+  const movies = useDataFetcher(link? link: '', fetchData);
   const results = movies?.results;
   return (
     <>

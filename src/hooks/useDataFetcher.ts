@@ -10,7 +10,7 @@ export function useDataFetcher(url: string, func: Function): any {
     }
 
     fetching();
-  }, []);
+  }, [url]);
 
   return data;
 }
