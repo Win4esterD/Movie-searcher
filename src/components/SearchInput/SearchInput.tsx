@@ -11,7 +11,13 @@ export function SearchInput() {
         placeholder="Search movie title"
         className={style.searchInput}
       ></input>
-      <Button className={style.button}>Search</Button>
+      <Button
+        className={style.button}
+        variant="filled"
+        color="var(--main-purple)"
+      >
+        Search
+      </Button>
     </Box>
   );
 }

@@ -1,0 +1,2 @@
+export const authKey: string =
+  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMTE1M2RhOTViNjVhMjhlMTVjMTZhZDhlMWVlM2VmOCIsInN1YiI6IjY2MmY2NzkyNjBiNThkMDEyOWRlZDVjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A9a61nrPmw8OjFHPKRWCdqXQI1J2gPtSKofqsEnQlTk';

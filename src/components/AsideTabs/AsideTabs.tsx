@@ -12,7 +12,7 @@ const selectedTabStyle = {
 export function AsideTabs(): JSX.Element {
   const [selected, setSelected] = useState<Number>(1);
   return (
-    <Flex className={style.tabsWrapper}>
+    <Flex className={style.tabsWrapper} direction="column">
       <Box
         className={style.tab}
         style={selected === 1 ? selectedTabStyle : {}}

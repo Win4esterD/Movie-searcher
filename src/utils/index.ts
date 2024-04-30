@@ -1,0 +1,1 @@
+export {posterBaseLink} from './urls';
