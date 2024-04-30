@@ -4,11 +4,11 @@ import style from './MoviesSection.module.css';
 import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
 import {useDataFetcher} from '@/hooks';
 import {fetchMovies, baseUrl} from '@/services/';
+import {movie} from '@/types/movie';
 
 export function MoviesSection() {
   const movies = useDataFetcher(baseUrl, fetchMovies);
-  const firstMovie = movies?.results[0]
-  console.log(firstMovie);
+  const results = movies?.results;
   return (
     <>
       <Box className={style.searchContainer}>
@@ -32,15 +32,18 @@ export function MoviesSection() {
       <Box className={style.sortInputWrapper}>
         <Dropdown label="Sort by" data={['Most popular']} />
       </Box>
-      <Flex>
-        <MovieCard
-          imgLink={firstMovie?.poster_path}
-          movieName={firstMovie?.title}
-          releaseDate={firstMovie?.release_date}
-          rating={firstMovie?.vote_average}
-          votes={firstMovie?.vote_count}
-          genreIds={firstMovie?.genre_ids}
-        />
+      <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
+        {results?.map((item: movie) => (
+          <MovieCard
+            key={item.id}
+            imgLink={item.poster_path}
+            movieName={item.title}
+            releaseDate={item.release_date}
+            rating={item.vote_average}
+            votes={item.vote_count}
+            genreIds={item.genre_ids}
+          />
+        ))}
       </Flex>
     </>
   );

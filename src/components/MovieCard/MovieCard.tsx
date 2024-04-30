@@ -4,6 +4,7 @@ import style from './MovieCard.module.css';
 import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
 import star from '/public/assets/img/icons/star.svg';
+import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import {useDataFetcher} from '@/hooks';
 import {genresLink} from '@/services/urls';
 import {fetchGenres} from '@/services/fetchers';
@@ -37,6 +38,7 @@ export function MovieCard({
   }).join('');
   return (
     <Box className={style.movieCard}>
+      <Image src={starUnliked} alt="Rate movie" className={style.rateMovie}/>
       <Flex className={style.contentWrapper} gap="1rem">
         <Image
           src={`${posterBaseLink}${imgLink}`}
@@ -53,7 +55,7 @@ export function MovieCard({
             <Image src={star} alt="Rating icon" width={23.3} height={22.16} />
             <Flex className={style.ratingAndVotes}>
               <Text className={style.rating}>{rating}</Text>
-              <Text>({votes})</Text>
+              <Text className={style.votes}>({votes})</Text>
             </Flex>
           </Flex>
           <Flex className={style.genresWrapper}>
