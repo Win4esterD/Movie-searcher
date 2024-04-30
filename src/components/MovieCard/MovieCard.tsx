@@ -6,8 +6,8 @@ import {posterBaseLink} from '@/utils';
 import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import {useDataFetcher} from '@/hooks';
-import {genresLink} from '@/services/urls';
 import {fetchData} from '@/services/client/fetchers';
+import { useState, useEffect } from 'react';
 
 type MovieCardProps = {
   imgLink: string;
@@ -26,7 +26,9 @@ export function MovieCard({
   votes,
   genreIds,
 }: MovieCardProps): JSX.Element {
-  const link = window.location.origin + '/api/movies/genres/';
+  const [link, setLink] = useState('');
+  useEffect(() => setLink(location?.origin + '/api/movies/genres/'));
+  
   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
     link,
     fetchData,
