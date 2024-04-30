@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-export function useDataFetcher(url: string, func: Function) {
+export function useDataFetcher(url: string, func: Function): any {
   const [movies, setMovies] = useState();
 
   useEffect(() => {

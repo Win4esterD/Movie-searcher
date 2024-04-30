@@ -1,13 +1,14 @@
 'use client';
 import {Box, Flex} from '@mantine/core';
 import style from './MoviesSection.module.css';
-import {SearchInput, Dropdown, NumInput} from '@/components';
+import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
 import {useDataFetcher} from '@/hooks';
 import {fetchMovies, baseUrl} from '@/services/';
 
 export function MoviesSection() {
   const movies = useDataFetcher(baseUrl, fetchMovies);
-  console.log(movies);
+  const firstMovie = movies?.results[0]
+  console.log(firstMovie);
   return (
     <>
       <Box className={style.searchContainer}>
@@ -31,6 +32,16 @@ export function MoviesSection() {
       <Box className={style.sortInputWrapper}>
         <Dropdown label="Sort by" data={['Most popular']} />
       </Box>
+      <Flex>
+        <MovieCard
+          imgLink={firstMovie?.poster_path}
+          movieName={firstMovie?.title}
+          releaseDate={firstMovie?.release_date}
+          rating={firstMovie?.vote_average}
+          votes={firstMovie?.vote_count}
+          genreIds={firstMovie?.genre_ids}
+        />
+      </Flex>
     </>
   );
 }
