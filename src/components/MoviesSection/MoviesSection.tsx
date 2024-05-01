@@ -5,26 +5,24 @@ import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
 import {useDataFetcher} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
-import { useEffect, useState } from 'react';
-
+import {useEffect, useState} from 'react';
 
 export function MoviesSection() {
   const [link, setLink] = useState('');
   const [genresLink, setGenresLink] = useState('');
 
-  
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
     setGenresLink(location?.origin + '/api/genres/');
-  })
+  });
 
-  const movies = useDataFetcher(link? link: '', fetchData);
+  const movies = useDataFetcher(link ? link : '', fetchData);
   const results = movies?.results;
 
-   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
-     genresLink,
-     fetchData,
-   );
+  const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
+    genresLink,
+    fetchData,
+  );
   return (
     <>
       <Box className={style.searchContainer}>
