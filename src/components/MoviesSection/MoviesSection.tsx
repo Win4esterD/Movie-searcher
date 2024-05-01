@@ -9,15 +9,22 @@ import { useEffect, useState } from 'react';
 
 
 export function MoviesSection() {
-  // const link = location?.origin + '/api/movies/';
   const [link, setLink] = useState('');
+  const [genresLink, setGenresLink] = useState('');
+
   
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
+    setGenresLink(location?.origin + '/api/genres/');
   })
 
   const movies = useDataFetcher(link? link: '', fetchData);
   const results = movies?.results;
+
+   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
+     genresLink,
+     fetchData,
+   );
   return (
     <>
       <Box className={style.searchContainer}>
@@ -51,6 +58,7 @@ export function MoviesSection() {
             rating={item.vote_average}
             votes={item.vote_count}
             genreIds={item.genre_ids}
+            genres={genres}
           />
         ))}
       </Flex>

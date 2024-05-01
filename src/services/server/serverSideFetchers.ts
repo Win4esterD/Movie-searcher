@@ -2,6 +2,7 @@ export async function serveMovies(url: string, authKey: string): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'GET',
+      cache: 'no-cache',
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${authKey}`,
@@ -18,13 +19,14 @@ export async function serveGenres(url: string, authKey: string): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'GET',
+      next: {revalidate: 3600},
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${authKey}`,
       },
     });
-    const genres = await response.json();
-    return await genres.genres;
+    const result = await response.json();
+    return await result.genres;
   } catch (err) {
     console.log(err);
   }
