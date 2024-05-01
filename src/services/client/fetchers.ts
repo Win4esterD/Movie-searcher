@@ -1,7 +1,8 @@
-export async function fetchData(url: string): Promise<any> {
+export async function fetchData(url: string) {
   try {
     const response = await fetch(url);
-    return await response.json();
+    const json = await response.json();
+    return json;
   } catch (err) {
     console.log(err);
   }

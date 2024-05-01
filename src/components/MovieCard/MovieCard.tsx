@@ -5,9 +5,6 @@ import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
 import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
-import {useDataFetcher} from '@/hooks';
-import {fetchData} from '@/services/client/fetchers';
-import { useState, useEffect } from 'react';
 
 type MovieCardProps = {
   imgLink: string;
@@ -16,6 +13,7 @@ type MovieCardProps = {
   rating: number;
   votes: number;
   genreIds: Array<number>;
+  genres: Array<{id: number; name: string}> | undefined;
 };
 
 export function MovieCard({
@@ -25,15 +23,8 @@ export function MovieCard({
   rating,
   votes,
   genreIds,
+  genres,
 }: MovieCardProps): JSX.Element {
-  const [link, setLink] = useState('');
-  useEffect(() => setLink(location?.origin + '/api/movies/genres/'));
-  
-  const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
-    link,
-    fetchData,
-  );
-
   const genresToRender = genres
     ?.map(item => {
       if (genreIds?.includes(item.id)) {
