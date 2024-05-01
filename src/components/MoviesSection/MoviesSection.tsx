@@ -6,6 +6,7 @@ import {useDataFetcher} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
+import {Pagination} from '@mantine/core';
 
 export function MoviesSection() {
   const [link, setLink] = useState('');
@@ -60,6 +61,14 @@ export function MoviesSection() {
           />
         ))}
       </Flex>
+      {results && (
+        <Pagination
+          total={movies?.total_pages}
+          boundaries={0}
+          color="var(--main-purple)"
+          className={style.pagination}
+        />
+      )}
     </>
   );
 }
