@@ -7,8 +7,8 @@ import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
 import {Pagination} from '@mantine/core';
-import { useRouter } from 'next/navigation';
-import { searchPageParams } from '@/types/searchPage';
+import {useRouter} from 'next/navigation';
+import {searchPageParams} from '@/types/searchPage';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
@@ -76,7 +76,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           color="var(--main-purple)"
           className={style.pagination}
           onChange={pageChangeHandler}
-          defaultValue={searchParams.page? +searchParams.page: 1}
+          defaultValue={searchParams.page ? +searchParams.page : 1}
         />
       )}
     </>

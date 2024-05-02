@@ -1,8 +1,7 @@
 import style from './page.module.css';
 import {Box} from '@mantine/core';
 import {Aside, MoviesSection} from '@/components';
-import { searchPageParams } from '@/types/searchPage';
-
+import {searchPageParams} from '@/types/searchPage';
 
 export default function Home({searchParams}: searchPageParams): JSX.Element {
   return (
