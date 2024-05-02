@@ -7,23 +7,31 @@ import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
 import {Pagination} from '@mantine/core';
+import { useRouter } from 'next/navigation';
+import { searchPageParams } from '@/types/searchPage';
 
-export function MoviesSection() {
+export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
   const [genresLink, setGenresLink] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
     setGenresLink(location?.origin + '/api/genres/');
-  });
+  }, []);
 
-  const movies = useDataFetcher(link ? link : '', fetchData);
+  const movies = useDataFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
 
   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
     genresLink,
     fetchData,
   );
+
+  function pageChangeHandler(value: number) {
+    router.push(`?page=${value}`);
+  }
+
   return (
     <>
       <Box className={style.searchContainer}>
@@ -67,6 +75,8 @@ export function MoviesSection() {
           boundaries={0}
           color="var(--main-purple)"
           className={style.pagination}
+          onChange={pageChangeHandler}
+          defaultValue={+searchParams.page}
         />
       )}
     </>
