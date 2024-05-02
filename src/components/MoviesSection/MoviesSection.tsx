@@ -76,7 +76,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           color="var(--main-purple)"
           className={style.pagination}
           onChange={pageChangeHandler}
-          defaultValue={+searchParams.page}
+          defaultValue={searchParams.page? +searchParams.page: 1}
         />
       )}
     </>
