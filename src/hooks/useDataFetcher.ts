@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import { searchParamsParser } from '@/utils';
-import { searchParams } from '@/types/searchPage';
+import {searchParamsParser} from '@/utils';
+import {searchParams} from '@/types/searchPage';
 
 export function useDataFetcher(
   url: string,

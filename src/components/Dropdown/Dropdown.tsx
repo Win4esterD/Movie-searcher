@@ -9,7 +9,11 @@ type dropdownProps = {
   placeholder?: string;
 };
 
-export function Dropdown({label, data, placeholder=''}: dropdownProps): JSX.Element {
+export function Dropdown({
+  label,
+  data,
+  placeholder = '',
+}: dropdownProps): JSX.Element {
   return (
     <NativeSelect
       className={style.dropdown}

@@ -4,7 +4,7 @@ import {serveMovies} from '@/services';
 import {baseUrl, searchUrl} from '@/services';
 
 export async function GET(req: NextRequest) {
-  let link
+  let link;
 
   const queries = req.nextUrl.search.replace('?', '&');
   if (queries.includes('query')) {
