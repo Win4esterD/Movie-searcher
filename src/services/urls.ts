@@ -3,3 +3,5 @@ export const baseUrl =
 
 export const genresLink =
   'https://api.themoviedb.org/3/genre/movie/list?language=en';
+
+export const searchUrl = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US'
