@@ -2,7 +2,7 @@
 import {Box, Flex} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
-import {useDataFetcher} from '@/hooks';
+import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
@@ -14,21 +14,16 @@ import {searchParamsParser} from '@/utils';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
-  const [genresLink, setGenresLink] = useState('');
   const router = useRouter();
 
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
-    setGenresLink(location?.origin + '/api/genres/');
   }, []);
 
-  const movies = useDataFetcher(link ? link : '', fetchData, searchParams);
+  const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
 
-  const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
-    genresLink,
-    fetchData,
-  );
+  const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
   function pageChangeHandler(value: number) {
     const newSearchParams = structuredClone(searchParams);

@@ -26,7 +26,7 @@ export async function serveGenres(url: string, authKey: string): Promise<any> {
       },
     });
     const result = await response.json();
-    return await result.genres;
+    return await result;
   } catch (err) {
     console.log(err);
   }

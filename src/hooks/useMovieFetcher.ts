@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {searchParamsParser} from '@/utils';
 import {searchParams} from '@/types/searchPage';
 
-export function useDataFetcher(
+export function useMovieFetcher(
   url: string,
   func: Function,
   params?: searchParams,
