@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {searchPageParams} from '@/types/searchPage';
 import { useRouter } from 'next/navigation';
 import { searchParamsParser } from '@/utils';
-import { KeyboardEvent, SyntheticEvent, useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 
 export function SearchInput({searchParams}: searchPageParams) {
   const router = useRouter();

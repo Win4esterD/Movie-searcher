@@ -10,6 +10,7 @@ import {Pagination} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import { searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
+import { searchParamsParser } from '@/utils';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
@@ -23,6 +24,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   const movies = useDataFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
+  // console.log(movies?.page)
 
   const genres: Array<{id: number; name: string}> | undefined = useDataFetcher(
     genresLink,
@@ -30,7 +32,10 @@ export function MoviesSection({searchParams}: searchPageParams) {
   );
 
   function pageChangeHandler(value: number) {
-    router.push(`?page=${value}`);
+    const newSearchParams = structuredClone(searchParams);
+    newSearchParams.page = value.toString();
+    const params = searchParamsParser(newSearchParams);
+    router.push(params);
   }
 
   return (
@@ -81,7 +86,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           color="var(--main-purple)"
           className={style.pagination}
           onChange={pageChangeHandler}
-          defaultValue={searchParams.page ? +searchParams.page : 1}
+          value={movies? movies.page: 1}
         />
       )}
     </>
