@@ -11,6 +11,7 @@ import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
+import { GenresDropdown } from '@/components';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
@@ -44,7 +45,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
         justify="space-between"
         wrap="wrap"
       >
-        <Dropdown data={genres?.map(genre => genre.name)} />
+        <GenresDropdown data={genres}/>
         <Dropdown
           label="Release year"
           placeholder="Select release year"
