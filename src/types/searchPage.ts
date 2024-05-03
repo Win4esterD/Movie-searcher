@@ -1,3 +1,8 @@
 export type searchPageParams = {
-  searchParams: {page: string};
+  searchParams: searchParams;
+};
+
+export type searchParams = {
+  page?: string;
+  query?: string;
 };

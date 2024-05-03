@@ -16,6 +16,8 @@ export function NumInput({label, placeholder}: NumInputProps): JSX.Element {
       size="md"
       radius="md"
       allowNegative={false}
+      max={10}
+      min={1}
     />
   );
 }

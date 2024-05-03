@@ -9,6 +9,8 @@ import {useEffect, useState} from 'react';
 import {Pagination} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
+import {getMoviesReleaseDates} from '@/utils';
+import {searchParamsParser} from '@/utils';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
@@ -29,14 +31,17 @@ export function MoviesSection({searchParams}: searchPageParams) {
   );
 
   function pageChangeHandler(value: number) {
-    router.push(`?page=${value}`);
+    const newSearchParams = structuredClone(searchParams);
+    newSearchParams.page = value.toString();
+    const params = searchParamsParser(newSearchParams);
+    router.push(params);
   }
 
   return (
     <>
       <Box className={style.searchContainer}>
         <Box className={style.movies}>Movies</Box>
-        <SearchInput />
+        <SearchInput searchParams={searchParams} />
       </Box>
       <Flex
         component="section"
@@ -44,8 +49,12 @@ export function MoviesSection({searchParams}: searchPageParams) {
         justify="space-between"
         wrap="wrap"
       >
-        <Dropdown />
-        <Dropdown label="Release year" data={['Select release year']} />
+        <Dropdown data={genres?.map(genre => genre.name)} />
+        <Dropdown
+          label="Release year"
+          placeholder="Select release year"
+          data={getMoviesReleaseDates()}
+        />
         <NumInput label="Ratings" placeholder="From" />
         <NumInput placeholder="To" />
         <Box component="span" className={style.resetFilters}>
@@ -53,7 +62,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
         </Box>
       </Flex>
       <Box className={style.sortInputWrapper}>
-        <Dropdown label="Sort by" data={['Most popular']} />
+        <Dropdown label="Sort by" placeholder="Most popular" />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
         {results?.map((item: movie) => (
@@ -76,7 +85,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           color="var(--main-purple)"
           className={style.pagination}
           onChange={pageChangeHandler}
-          defaultValue={searchParams.page ? +searchParams.page : 1}
+          value={movies ? movies.page : 1}
         />
       )}
     </>
