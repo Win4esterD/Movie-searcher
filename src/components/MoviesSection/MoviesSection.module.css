@@ -24,6 +24,8 @@
   line-height: 1.25rem;
   color: #7b7c88;
   margin-top: 2.6rem;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .sortInputWrapper {

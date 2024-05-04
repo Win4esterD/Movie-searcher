@@ -1,7 +1,13 @@
 'use client';
 import {Box, Flex} from '@mantine/core';
 import style from './MoviesSection.module.css';
-import {SearchInput, Dropdown, NumInput, MovieCard} from '@/components';
+import {
+  SearchInput,
+  Dropdown,
+  MovieCard,
+  GenresDropdown,
+  RatingInputs
+} from '@/components';
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
@@ -11,7 +17,8 @@ import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
-import { GenresDropdown } from '@/components';
+import { sortFilters } from '@/utils';
+import Link from 'next/link';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
@@ -45,20 +52,29 @@ export function MoviesSection({searchParams}: searchPageParams) {
         justify="space-between"
         wrap="wrap"
       >
-        <GenresDropdown data={genres}/>
+        <GenresDropdown data={genres} searchParams={searchParams} />
         <Dropdown
           label="Release year"
           placeholder="Select release year"
           data={getMoviesReleaseDates()}
+          searchParams={searchParams}
+          filter="primary_release_year"
         />
-        <NumInput label="Ratings" placeholder="From" />
-        <NumInput placeholder="To" />
-        <Box component="span" className={style.resetFilters}>
+        <RatingInputs searchParams={searchParams} />
+        <Link
+          className={style.resetFilters}
+          href="./"
+        >
           Reset filters
-        </Box>
+        </Link>
       </Flex>
       <Box className={style.sortInputWrapper}>
-        <Dropdown label="Sort by" placeholder="Most popular" />
+        <Dropdown
+          data={sortFilters}
+          searchParams={searchParams}
+          filter="sort_by"
+          label="Sort by"
+        />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
         {results?.map((item: movie) => (
