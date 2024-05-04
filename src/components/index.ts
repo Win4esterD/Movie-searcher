@@ -5,3 +5,4 @@ export {SearchInput} from './SearchInput/SearchInput';
 export {Dropdown} from './Dropdown/Dropdown';
 export {NumInput} from './NumInput/NumInput';
 export {MovieCard} from './MovieCard/MovieCard';
+export {GenresDropdown} from './GenresDropdown/GenresDropdown';

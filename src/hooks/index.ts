@@ -1,1 +1,2 @@
-export {useDataFetcher} from './useDataFetcher';
+export {useMovieFetcher} from './useMovieFetcher';
+export {useGenres} from './useGenres';
