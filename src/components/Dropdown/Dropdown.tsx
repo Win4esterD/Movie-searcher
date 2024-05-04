@@ -3,10 +3,10 @@ import {NativeSelect, rem} from '@mantine/core';
 import style from './Dropdown.module.css';
 import vectorIMG from '/public/assets/img/icons/vector.svg';
 import Image from 'next/image';
-import { searchParams } from '@/types/searchPage';
-import { searchParamsParser } from '@/utils';
-import { useRouter } from 'next/navigation';
-import { SyntheticEvent } from 'react';
+import {searchParams} from '@/types/searchPage';
+import {searchParamsParser} from '@/utils';
+import {useRouter} from 'next/navigation';
+import {SyntheticEvent} from 'react';
 
 type dropdownProps = {
   label?: string;
@@ -20,17 +20,18 @@ export function Dropdown({
   label,
   data,
   placeholder = '',
-  filter='',
+  filter = '',
   searchParams,
 }: dropdownProps): JSX.Element {
-
   const newData = structuredClone(data);
   newData?.unshift(placeholder);
   const router = useRouter();
 
   function changeHandler(e: SyntheticEvent) {
     const newSearchParams = structuredClone(searchParams);
-    newSearchParams[filter as keyof searchParams] = (e.target as HTMLInputElement).value;
+    newSearchParams[filter as keyof searchParams] = (
+      e.target as HTMLInputElement
+    ).value;
     const link = searchParamsParser(newSearchParams);
     router.push(link);
   }

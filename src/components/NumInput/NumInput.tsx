@@ -2,7 +2,7 @@
 import {NumberInput} from '@mantine/core';
 import style from './NumInput.module.css';
 import {searchParamsParser} from '@/utils';
-import { searchParams} from '@/types/searchPage';
+import {searchParams} from '@/types/searchPage';
 import {useRouter} from 'next/navigation';
 
 type NumInputProps = {

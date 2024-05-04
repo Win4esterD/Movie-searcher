@@ -6,7 +6,7 @@ import {
   Dropdown,
   MovieCard,
   GenresDropdown,
-  RatingInputs
+  RatingInputs,
 } from '@/components';
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
@@ -17,7 +17,7 @@ import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
-import { sortFilters } from '@/utils';
+import {sortFilters} from '@/utils';
 import Link from 'next/link';
 
 export function MoviesSection({searchParams}: searchPageParams) {
@@ -61,10 +61,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           filter="primary_release_year"
         />
         <RatingInputs searchParams={searchParams} />
-        <Link
-          className={style.resetFilters}
-          href="./"
-        >
+        <Link className={style.resetFilters} href="./">
           Reset filters
         </Link>
       </Flex>
