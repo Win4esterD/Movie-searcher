@@ -1,0 +1,9 @@
+.starsBlock {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.starsBlock:hover {
+  cursor: pointer;
+}

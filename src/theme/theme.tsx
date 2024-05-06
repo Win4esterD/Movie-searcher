@@ -1,5 +1,5 @@
 'use client';
-import {NativeSelect, createTheme, NumberInput, Button} from '@mantine/core';
+import {NativeSelect, createTheme, NumberInput, Button, Modal} from '@mantine/core';
 
 export const theme = createTheme({
   components: {
@@ -20,13 +20,6 @@ export const theme = createTheme({
           fontSize: '1rem',
           paddingBottom: '0.3rem',
           paddingLeft: '0.4rem',
-        },
-      },
-    }),
-    Button: Button.extend({
-      styles: {
-        root: {
-          // backgroundColor: 'var(--main-purple)',
         },
       },
     }),

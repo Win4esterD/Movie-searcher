@@ -7,3 +7,5 @@ export {NumInput} from './NumInput/NumInput';
 export {RatingInputs} from './RatingInputs/RatingInputs';
 export {MovieCard} from './MovieCard/MovieCard';
 export {GenresDropdown} from './GenresDropdown/GenresDropdown';
+export {Stars} from './Stars/Stars';
+export {ModalWindow} from './ModalWindow/ModalWindow';
