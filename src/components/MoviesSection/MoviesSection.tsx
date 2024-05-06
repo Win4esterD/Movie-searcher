@@ -61,7 +61,11 @@ export function MoviesSection({searchParams}: searchPageParams) {
           filter="primary_release_year"
         />
         <RatingInputs searchParams={searchParams} />
-        <Link className={style.resetFilters} href="./">
+        <Link
+          className={style.resetFilters}
+          href="/"
+          onClick={() => setTimeout(() => window.location.reload(), 200)}
+        >
           Reset filters
         </Link>
       </Flex>
