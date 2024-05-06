@@ -9,7 +9,7 @@ type NumInputProps = {
   label?: string;
   placeholder?: string;
   filter?: string;
-  searchParams?: searchParams;
+  searchParams: searchParams;
   direction?: 'from' | 'to';
 };
 
@@ -20,6 +20,8 @@ export function NumInput({
   direction,
 }: NumInputProps): JSX.Element {
   const router = useRouter();
+  
+  const defValue = direction === 'to' ? 'vote_average.lte' : 'vote_average.gte';
 
   function changeHandler(value: string | number) {
     const newSearchParams = structuredClone(searchParams);
@@ -48,6 +50,7 @@ export function NumInput({
       max={10}
       min={1}
       onChange={changeHandler}
+      defaultValue={searchParams[defValue as keyof searchParams]}
     />
   );
 }
