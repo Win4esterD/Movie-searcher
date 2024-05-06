@@ -5,7 +5,7 @@ import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
 import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
-import { Dispatch } from 'react';
+import {Dispatch} from 'react';
 
 type MovieCardProps = {
   imgLink: string;
@@ -16,7 +16,7 @@ type MovieCardProps = {
   genreIds: Array<number>;
   genres: Array<{id: number; name: string}> | undefined;
   setModal: Dispatch<boolean>;
-  setModalInfo: Dispatch<string>
+  setModalInfo: Dispatch<string>;
 };
 
 export function MovieCard({

@@ -20,7 +20,7 @@ export function NumInput({
   direction,
 }: NumInputProps): JSX.Element {
   const router = useRouter();
-  
+
   const defValue = direction === 'to' ? 'vote_average.lte' : 'vote_average.gte';
 
   function changeHandler(value: string | number) {

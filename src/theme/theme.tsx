@@ -1,5 +1,11 @@
 'use client';
-import {NativeSelect, createTheme, NumberInput, Button, Modal} from '@mantine/core';
+import {
+  NativeSelect,
+  createTheme,
+  NumberInput,
+  Button,
+  Modal,
+} from '@mantine/core';
 
 export const theme = createTheme({
   components: {

@@ -1,7 +1,7 @@
-import { Modal, Box, Divider, Button } from "@mantine/core";
-import { Dispatch } from "react";
-import style from './ModalWindow.module.css'
-import { Stars } from "../Stars/Stars";
+import {Modal, Box, Divider, Button} from '@mantine/core';
+import {Dispatch} from 'react';
+import style from './ModalWindow.module.css';
+import {Stars} from '../Stars/Stars';
 
 type ModalWindowProps = {
   modalInfo: string;
