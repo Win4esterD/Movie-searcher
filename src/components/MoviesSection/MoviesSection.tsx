@@ -12,7 +12,7 @@ import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
-import {Pagination} from '@mantine/core';
+import {Pagination, Loader} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
@@ -78,18 +78,22 @@ export function MoviesSection({searchParams}: searchPageParams) {
         />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
-        {results?.map((item: movie) => (
-          <MovieCard
-            key={item.id}
-            imgLink={item.poster_path}
-            movieName={item.title}
-            releaseDate={item.release_date}
-            rating={item.vote_average}
-            votes={item.vote_count}
-            genreIds={item.genre_ids}
-            genres={genres}
-          />
-        ))}
+        {results ? (
+          results.map((item: movie) => (
+            <MovieCard
+              key={item.id}
+              imgLink={item.poster_path}
+              movieName={item.title}
+              releaseDate={item.release_date}
+              rating={item.vote_average}
+              votes={item.vote_count}
+              genreIds={item.genre_ids}
+              genres={genres}
+            />
+          ))
+        ) : (
+          <Loader size="xl" color="var(--main-purple)" style={{marginTop: '3.4rem'}}/>
+        )}
       </Flex>
       {results && (
         <Pagination

@@ -38,7 +38,7 @@ export function MovieCard({
       <Flex className={style.contentWrapper} gap="1rem">
         <Image
           src={`${posterBaseLink}${imgLink}`}
-          alt="Poster"
+          alt={movieName? movieName: "Poster"}
           className={style.movieImage}
           width="119"
           height="170"
