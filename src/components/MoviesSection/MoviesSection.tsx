@@ -34,7 +34,6 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
-  console.log(movies)
 
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
