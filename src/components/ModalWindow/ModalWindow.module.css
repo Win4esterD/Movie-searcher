@@ -1,0 +1,20 @@
+.modalInnerContainer {
+  width: 348px;
+  height: 134px;
+}
+
+.modalMovieName {
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.modalDivider {
+  position: relative;
+}
+
+.modalButton {
+  margin-top: 1rem;
+  width: 4.563rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}

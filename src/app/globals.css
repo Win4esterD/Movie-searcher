@@ -11,3 +11,7 @@
   --main-grey: #7b7c88;
   --main-white: #fff;
 }
+
+.mantine-Modal-header {
+  border-radius: 0.5rem;
+}

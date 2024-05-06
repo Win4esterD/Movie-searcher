@@ -1,10 +1,11 @@
 'use client';
-import {Box, Flex, Text} from '@mantine/core';
+import {Box, Flex, Text, Modal} from '@mantine/core';
 import style from './MovieCard.module.css';
 import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
 import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
+import {Dispatch} from 'react';
 
 type MovieCardProps = {
   imgLink: string;
@@ -14,6 +15,8 @@ type MovieCardProps = {
   votes: number;
   genreIds: Array<number>;
   genres: Array<{id: number; name: string}> | undefined;
+  setModal: Dispatch<boolean>;
+  setModalInfo: Dispatch<string>;
 };
 
 export function MovieCard({
@@ -24,6 +27,8 @@ export function MovieCard({
   votes,
   genreIds,
   genres,
+  setModal,
+  setModalInfo,
 }: MovieCardProps): JSX.Element {
   const genresToRender = genres
     ?.map(item => {
@@ -32,13 +37,24 @@ export function MovieCard({
       }
     })
     .join('');
+
+  function modalCaller() {
+    setModalInfo(movieName);
+    setModal(true);
+  }
+
   return (
     <Box className={style.movieCard}>
-      <Image src={starUnliked} alt="Rate movie" className={style.rateMovie} />
+      <Image
+        src={starUnliked}
+        alt="Rate movie"
+        className={style.rateMovie}
+        onClick={modalCaller}
+      />
       <Flex className={style.contentWrapper} gap="1rem">
         <Image
           src={`${posterBaseLink}${imgLink}`}
-          alt="Poster"
+          alt={movieName ? movieName : 'Poster'}
           className={style.movieImage}
           width="119"
           height="170"

@@ -1,5 +1,5 @@
 'use client';
-import {Box, Flex} from '@mantine/core';
+import {Box, Flex, Divider} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -7,12 +7,14 @@ import {
   MovieCard,
   GenresDropdown,
   RatingInputs,
+  ModalWindow,
+  NotFound
 } from '@/components';
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
-import {Pagination} from '@mantine/core';
+import {Pagination, Loader} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
@@ -23,6 +25,8 @@ import Link from 'next/link';
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
   const router = useRouter();
+  const [modal, setModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState('');
 
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
@@ -30,6 +34,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
+  console.log(movies)
 
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
@@ -42,6 +47,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   return (
     <>
+      <ModalWindow modalInfo={modalInfo} isOpened={modal} setModal={setModal} />
       <Box className={style.searchContainer}>
         <Box className={style.movies}>Movies</Box>
         <SearchInput searchParams={searchParams} />
@@ -52,7 +58,11 @@ export function MoviesSection({searchParams}: searchPageParams) {
         justify="space-between"
         wrap="wrap"
       >
-        <GenresDropdown data={genres} searchParams={searchParams} />
+        <GenresDropdown
+          data={genres}
+          searchParams={searchParams}
+          placeholder="Select genre"
+        />
         <Dropdown
           label="Release year"
           placeholder="Select release year"
@@ -78,20 +88,30 @@ export function MoviesSection({searchParams}: searchPageParams) {
         />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
-        {results?.map((item: movie) => (
-          <MovieCard
-            key={item.id}
-            imgLink={item.poster_path}
-            movieName={item.title}
-            releaseDate={item.release_date}
-            rating={item.vote_average}
-            votes={item.vote_count}
-            genreIds={item.genre_ids}
-            genres={genres}
+        {movies ? (
+          results.map((item: movie) => (
+            <MovieCard
+              key={item.id}
+              imgLink={item.poster_path}
+              movieName={item.title}
+              releaseDate={item.release_date}
+              rating={item.vote_average}
+              votes={item.vote_count}
+              genreIds={item.genre_ids}
+              genres={genres}
+              setModal={setModal}
+              setModalInfo={setModalInfo}
+            />
+          ))
+        ) : (
+          <Loader
+            size="xl"
+            color="var(--main-purple)"
+            style={{marginTop: '3.4rem'}}
           />
-        ))}
+        )}
       </Flex>
-      {results && (
+      {results?.length > 0 && (
         <Pagination
           total={movies?.total_pages}
           boundaries={0}
@@ -101,6 +121,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           value={movies ? movies.page : 1}
         />
       )}
+      {results?.length === 0 && <NotFound />}
     </>
   );
 }

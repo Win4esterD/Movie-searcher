@@ -27,7 +27,9 @@ export function Dropdown({
   newData?.unshift(placeholder);
   const router = useRouter();
 
-  const [value, setValue] = useState<any>(searchParams[filter as keyof searchParams]);
+  const [value, setValue] = useState<any>(
+    searchParams[filter as keyof searchParams],
+  );
   useEffect(() => {
     if (JSON.stringify(searchParams) === '{}') {
       setValue(placeholder);

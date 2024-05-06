@@ -7,12 +7,13 @@ export function useMovieFetcher(
   func: Function,
   params?: searchParams,
 ): any {
-  const [data, setData] = useState();
+  const [data, setData] = useState(false);
 
   let paramsStr = searchParamsParser(params);
 
   useEffect(() => {
     async function fetching() {
+      setData(false);
       const result = await func(`${url}/${paramsStr}`);
       setData(result);
     }
