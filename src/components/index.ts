@@ -9,3 +9,4 @@ export {MovieCard} from './MovieCard/MovieCard';
 export {GenresDropdown} from './GenresDropdown/GenresDropdown';
 export {Stars} from './Stars/Stars';
 export {ModalWindow} from './ModalWindow/ModalWindow';
+export {NotFound} from './NotFound/NotFound';

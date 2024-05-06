@@ -7,14 +7,14 @@ import {
   MovieCard,
   GenresDropdown,
   RatingInputs,
-  Stars,
   ModalWindow,
+  NotFound
 } from '@/components';
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
 import {useEffect, useState} from 'react';
-import {Pagination, Loader, Button} from '@mantine/core';
+import {Pagination, Loader} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
@@ -34,6 +34,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
+  console.log(movies)
 
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
@@ -110,7 +111,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           />
         )}
       </Flex>
-      {results && (
+      {results?.length > 0 && (
         <Pagination
           total={movies?.total_pages}
           boundaries={0}
@@ -120,6 +121,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
           value={movies ? movies.page : 1}
         />
       )}
+      {results?.length === 0 && <NotFound />}
     </>
   );
 }
