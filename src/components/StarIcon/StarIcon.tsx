@@ -1,31 +1,18 @@
 import style from './StarIcon.module.css';
-import { Dispatch } from 'react';
 
 type starIconProps = {
   id?: number;
   pointState?: number;
-  setPointerState: Dispatch<number>;
-  rating: null | number;
-  setRating: Dispatch<number>;
+  clickHandler: (value: number) => void;
+  mouseOverHandler: (value: number) => void;
 };
 
 export function StarIcon({
   id = 0,
   pointState = 0,
-  setPointerState,
-  rating,
-  setRating,
+  mouseOverHandler,
+  clickHandler,
 }: starIconProps) {
-
-  function mouseOverHandler() {
-    !rating && setPointerState(id);
-  }
-
-  function clickHandler() {
-    setRating(id);
-    setPointerState(id);
-  }
-
   return (
     <svg
       width="28.000000"
@@ -34,8 +21,8 @@ export function StarIcon({
       fill={pointState >= id ? '#fab005' : 'none'}
       className={style.svg}
       xmlns="http://www.w3.org/2000/svg"
-      onMouseOver={mouseOverHandler}
-      onClick={clickHandler}
+      onMouseOver={() => mouseOverHandler(id)}
+      onClick={() => clickHandler(id)}
     >
       <desc>Created with Pixso.</desc>
       <defs>

@@ -121,6 +121,7 @@ export function MoviesSection({searchParams}: searchPageParams) {
                 setModal={setModal}
                 setModalInfo={setModalInfo}
                 id={item.id}
+                favoriteMovies={favoriteMovies}
               />
             ))
           ) : (

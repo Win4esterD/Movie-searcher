@@ -16,83 +16,81 @@ type starsProps = {
 };
 
 export function Stars({
-  modalInfo,
   rating,
   setRating,
   pointState,
   setPointerState,
 }: starsProps): JSX.Element {
+
+  function highlightStars(id: number) {
+    !rating && setPointerState(id);
+  }
+
+  function setRatingInStars(id: number) {
+    setRating(id);
+    setPointerState(id);
+  }
   return (
     <Box className={style.starsBlock}>
       <StarIcon
         id={1}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={2}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={3}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={4}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={5}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={6}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={7}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={8}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={9}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
       <StarIcon
         id={10}
         pointState={pointState}
-        setPointerState={setPointerState}
-        rating={rating}
-        setRating={setRating}
+        mouseOverHandler={highlightStars}
+        clickHandler={setRatingInStars}
       />
     </Box>
   );
