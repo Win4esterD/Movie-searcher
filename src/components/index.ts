@@ -10,4 +10,4 @@ export {GenresDropdown} from './GenresDropdown/GenresDropdown';
 export {Stars} from './Stars/Stars';
 export {ModalWindow} from './ModalWindow/ModalWindow';
 export {NotFound} from './NotFound/NotFound';
-export {Star} from './StarIcon/StarIcon';
+export {StarIcon} from './StarIcon/StarIcon';

@@ -1,15 +1,41 @@
 import style from './StarIcon.module.css';
+import { Dispatch } from 'react';
 
-export function Star() {
+type starIconProps = {
+  id?: number;
+  pointState?: number;
+  setPointerState: Dispatch<number>;
+  rating: null | number;
+  setRating: Dispatch<number>;
+};
+
+export function StarIcon({
+  id = 0,
+  pointState = 0,
+  setPointerState,
+  rating,
+  setRating,
+}: starIconProps) {
+
+  function mouseOverHandler() {
+    !rating && setPointerState(id);
+  }
+
+  function clickHandler() {
+    setRating(id);
+    setPointerState(id);
+  }
+
   return (
     <svg
       width="28.000000"
       height="28.000000"
       viewBox="0 0 28 28"
-      fill="none"
+      fill={pointState >= id ? '#fab005' : 'none'}
       className={style.svg}
       xmlns="http://www.w3.org/2000/svg"
-      // xmlns:xlink="http://www.w3.org/1999/xlink"
+      onMouseOver={mouseOverHandler}
+      onClick={clickHandler}
     >
       <desc>Created with Pixso.</desc>
       <defs>
@@ -19,7 +45,7 @@ export function Star() {
             width="28.000000"
             height="28.000000"
             fill="white"
-            fill-opacity="0"
+            fillOpacity="0"
           />
         </clipPath>
       </defs>
@@ -28,23 +54,23 @@ export function Star() {
         width="28.000000"
         height="28.000000"
         fill="#FFFFFF"
-        fill-opacity="0"
+        fillOpacity="0"
       />
-      <g clip-path="url(#clip16_280)">
+      <g clipPath="url(#clip16_280)">
         <path
           id="Vector"
           d="M13.99 20.7L6.79 24.49L8.17 16.47L2.34 10.79L10.39 9.63L13.99 2.33L17.59 9.63L25.64 10.79L19.8 16.47L21.18 24.49L13.99 20.7Z"
           fill="#D5D6DC"
-          fill-opacity="1.000000"
-          fill-rule="nonzero"
+          fillOpacity="1.000000"
+          fillRule="nonzero"
         />
         <path
           id="Vector"
           d="M6.79 24.49L8.17 16.47L2.34 10.79L10.39 9.63L13.99 2.33L17.59 9.63L25.64 10.79L19.8 16.47L21.18 24.49L13.99 20.7L6.79 24.49Z"
-          stroke="#D5D6DC"
-          stroke-opacity="1.000000"
-          stroke-width="2.000000"
-          stroke-linejoin="round"
+          stroke={pointState >= id ? '#fab005' : 'none'}
+          strokeOpacity="1.000000"
+          strokeWidth="2.000000"
+          strokeLinejoin="round"
         />
       </g>
     </svg>

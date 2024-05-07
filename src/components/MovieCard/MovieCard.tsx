@@ -16,7 +16,8 @@ type MovieCardProps = {
   genreIds: Array<number>;
   genres: Array<{id: number; name: string}> | undefined;
   setModal: Dispatch<boolean>;
-  setModalInfo: Dispatch<string>;
+  setModalInfo: Dispatch<{id: number, 'movie-name': string}>;
+  id: number;
 };
 
 export function MovieCard({
@@ -29,6 +30,7 @@ export function MovieCard({
   genres,
   setModal,
   setModalInfo,
+  id,
 }: MovieCardProps): JSX.Element {
   const genresToRender = genres
     ?.map(item => {
@@ -39,7 +41,7 @@ export function MovieCard({
     .join('');
 
   function modalCaller() {
-    setModalInfo(movieName);
+    setModalInfo({'movie-name': movieName, 'id': id});
     setModal(true);
   }
 

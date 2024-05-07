@@ -1,8 +1,8 @@
 .svg:hover {
-  fill: #fab005;
+  /* fill: #fab005; */
   cursor: pointer;
 }
 
-.svg:hover g path {
+/* .svg:hover g path {
   stroke: #fab005;
-}
+} */

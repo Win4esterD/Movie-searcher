@@ -1,5 +1,5 @@
 'use client';
-import {Box, Flex, Divider} from '@mantine/core';
+import {Box, Flex} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -8,7 +8,7 @@ import {
   GenresDropdown,
   RatingInputs,
   ModalWindow,
-  NotFound
+  NotFound,
 } from '@/components';
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
@@ -21,20 +21,31 @@ import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
 import Link from 'next/link';
+import {MoviesSectionContext} from '@/providers/context';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const [link, setLink] = useState('');
   const router = useRouter();
   const [modal, setModal] = useState(false);
-  const [modalInfo, setModalInfo] = useState('');
+  const [modalInfo, setModalInfo] = useState({'movie-name': '', id: 0});
+  const [favoriteMovies, setFaviriteMovies] = useState<any>([]);
 
   useEffect(() => {
     setLink(location?.origin + '/api/movies/');
+    const savedMovies = localStorage.getItem('movies');
+    if (savedMovies) {
+      setFaviriteMovies(JSON.parse(savedMovies));
+    } else {
+      localStorage.setItem('movies', '[]');
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('movies', JSON.stringify(favoriteMovies));
+  }, [favoriteMovies]);
 
   const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
   const results = movies?.results;
-
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
   function pageChangeHandler(value: number) {
@@ -46,70 +57,81 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   return (
     <>
-      <ModalWindow modalInfo={modalInfo} isOpened={modal} setModal={setModal} />
-      <Box className={style.searchContainer}>
-        <Box className={style.movies}>Movies</Box>
-        <SearchInput searchParams={searchParams} />
-      </Box>
-      <Flex
-        component="section"
-        className={style.inputsSection}
-        justify="space-between"
-        wrap="wrap"
+      <MoviesSectionContext.Provider
+        value={{favoriteMovies, setFaviriteMovies}}
       >
-        <GenresDropdown
-          data={genres}
-          searchParams={searchParams}
-          placeholder="Select genre"
+        <ModalWindow
+          modalInfo={modalInfo}
+          isOpened={modal}
+          setModal={setModal}
+          favoriteMovies={favoriteMovies}
+          setFavoriteMovies={setFaviriteMovies}
         />
-        <Dropdown
-          label="Release year"
-          placeholder="Select release year"
-          data={getMoviesReleaseDates()}
-          searchParams={searchParams}
-          filter="primary_release_year"
-        />
-        <RatingInputs searchParams={searchParams} />
-        <Link
-          className={style.resetFilters}
-          href="/"
-          onClick={() => setTimeout(() => window.location.reload(), 200)}
+        <Box className={style.searchContainer}>
+          <Box className={style.movies}>Movies</Box>
+          <SearchInput searchParams={searchParams} />
+        </Box>
+        <Flex
+          component="section"
+          className={style.inputsSection}
+          justify="space-between"
+          wrap="wrap"
         >
-          Reset filters
-        </Link>
-      </Flex>
-      <Box className={style.sortInputWrapper}>
-        <Dropdown
-          data={sortFilters}
-          searchParams={searchParams}
-          filter="sort_by"
-          label="Sort by"
-        />
-      </Box>
-      <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
-        {movies ? (
-          results.map((item: movie) => (
-            <MovieCard
-              key={item.id}
-              imgLink={item.poster_path}
-              movieName={item.title}
-              releaseDate={item.release_date}
-              rating={item.vote_average}
-              votes={item.vote_count}
-              genreIds={item.genre_ids}
-              genres={genres}
-              setModal={setModal}
-              setModalInfo={setModalInfo}
-            />
-          ))
-        ) : (
-          <Loader
-            size="xl"
-            color="var(--main-purple)"
-            style={{marginTop: '3.4rem'}}
+          <GenresDropdown
+            data={genres}
+            searchParams={searchParams}
+            placeholder="Select genre"
           />
-        )}
-      </Flex>
+          <Dropdown
+            label="Release year"
+            placeholder="Select release year"
+            data={getMoviesReleaseDates()}
+            searchParams={searchParams}
+            filter="primary_release_year"
+          />
+          <RatingInputs searchParams={searchParams} />
+          <Link
+            className={style.resetFilters}
+            href="/"
+            onClick={() => setTimeout(() => window.location.reload(), 200)}
+          >
+            Reset filters
+          </Link>
+        </Flex>
+        <Box className={style.sortInputWrapper}>
+          <Dropdown
+            data={sortFilters}
+            searchParams={searchParams}
+            filter="sort_by"
+            label="Sort by"
+          />
+        </Box>
+        <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
+          {movies ? (
+            results.map((item: movie) => (
+              <MovieCard
+                key={item.id}
+                imgLink={item.poster_path}
+                movieName={item.title}
+                releaseDate={item.release_date}
+                rating={item.vote_average}
+                votes={item.vote_count}
+                genreIds={item.genre_ids}
+                genres={genres}
+                setModal={setModal}
+                setModalInfo={setModalInfo}
+                id={item.id}
+              />
+            ))
+          ) : (
+            <Loader
+              size="xl"
+              color="var(--main-purple)"
+              style={{marginTop: '3.4rem'}}
+            />
+          )}
+        </Flex>
+      </MoviesSectionContext.Provider>
       {results?.length > 0 && (
         <Pagination
           total={movies?.total_pages}
