@@ -2,20 +2,26 @@
 import {Box} from '@mantine/core';
 import style from './Stars.module.css';
 import {StarIcon} from '../StarIcon/StarIcon';
-import {useState, Dispatch} from 'react';
+import { Dispatch} from 'react';
 
 type starsProps = {
   modalInfo: {
     id: number;
     'movie-name': string;
-  }
-  rating: number| null;
-  setRating: Dispatch<number>, 
-}
+  };
+  rating: number | null;
+  setRating: Dispatch<number>;
+  pointState: number;
+  setPointerState: Dispatch<number>,
+};
 
-export function Stars({modalInfo, rating, setRating}: starsProps): JSX.Element {
-  const [pointState, setPointerState] = useState(0);
-
+export function Stars({
+  modalInfo,
+  rating,
+  setRating,
+  pointState,
+  setPointerState,
+}: starsProps): JSX.Element {
   return (
     <Box className={style.starsBlock}>
       <StarIcon

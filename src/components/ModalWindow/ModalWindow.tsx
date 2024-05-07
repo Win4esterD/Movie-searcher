@@ -1,6 +1,6 @@
 'use client';
 import {Modal, Box, Divider, Button} from '@mantine/core';
-import {Dispatch, useState} from 'react';
+import {Dispatch, useState, useEffect} from 'react';
 import style from './ModalWindow.module.css';
 import {Stars} from '../Stars/Stars';
 import { favoriteMovie } from '@/types/favoriteMovie';
@@ -22,6 +22,22 @@ export function ModalWindow({
   setFavoriteMovies,
 }: ModalWindowProps) {
   const [rating, setRating] = useState<null | number>(null);
+  const [pointState, setPointerState] = useState(0);
+
+  useEffect(() => {
+    if(isOpened) {
+      for(let item of favoriteMovies) {
+        if(item.id === modalInfo.id) {
+          setRating(item.rating);
+          setPointerState(item.rating);
+        }
+      }
+      return () => {
+        setRating(null);
+        setPointerState(0);
+      }
+    }
+  }, [isOpened]);
 
   function clickHandler() {
     if (rating) {
@@ -35,6 +51,8 @@ export function ModalWindow({
     }
     setModal(false);
   }
+
+
   return (
     <Modal
       opened={isOpened}
@@ -51,7 +69,13 @@ export function ModalWindow({
         <Box component="p" className={style.modalMovieName}>
           {modalInfo['movie-name']}
         </Box>
-        <Stars modalInfo={modalInfo} setRating={setRating} rating={rating} />
+        <Stars
+          modalInfo={modalInfo}
+          setRating={setRating}
+          rating={rating}
+          pointState={pointState}
+          setPointerState={setPointerState}
+        />
         <Button
           color="var(--main-purple)"
           className={style.modalButton}
