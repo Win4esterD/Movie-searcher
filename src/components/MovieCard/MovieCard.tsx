@@ -9,6 +9,8 @@ import starPurple from '/public/assets/img/icons/starPurple.svg';
 import {Dispatch} from 'react';
 import {favoriteMovie} from '@/types/favoriteMovie';
 import {isMovieInFavorites} from '@/utils';
+import Link from 'next/link';
+import {useRouter} from 'next/navigation';
 
 type MovieCardProps = {
   imgLink: string;
@@ -45,6 +47,8 @@ export function MovieCard({
     })
     .join('');
 
+  const router = useRouter();
+
   function modalCaller() {
     setModalInfo({'movie-name': movieName, id: id});
     setModal(true);
@@ -61,7 +65,9 @@ export function MovieCard({
           onClick={modalCaller}
         />
         {typeof inFavorites === 'object' && (
-          <Box component="span" className={style.userRating}>{inFavorites.rating}</Box>
+          <Box component="span" className={style.userRating}>
+            {inFavorites.rating}
+          </Box>
         )}
       </Box>
       <Flex className={style.contentWrapper} gap="1rem">
@@ -72,9 +78,16 @@ export function MovieCard({
           width="119"
           height="170"
           priority
+          onClick={() => router.push(`/movies/${id}`)}
         />
         <Box>
-          <Text className={style.movieName}>{movieName}</Text>
+          <Link
+            href={`/movies/${id}`}
+            target="_blank"
+            className={style.movieName}
+          >
+            {movieName}
+          </Link>
           <Text className={style.year}>{releaseDate?.slice(0, 4)}</Text>
           <Flex className={style.movieStatistics}>
             <Image src={star} alt="Rating icon" width={23.3} height={22.16} />

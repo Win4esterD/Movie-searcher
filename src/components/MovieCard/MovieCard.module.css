@@ -35,8 +35,10 @@
   font-weight: 600;
   line-height: 1.5rem;
   color: var(--main-purple);
+  display: block;
   width: 17rem;
   max-width: 100%;
+  text-decoration: none;
 }
 
 .year {
