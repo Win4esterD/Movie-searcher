@@ -21,15 +21,14 @@ import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
 import Link from 'next/link';
-import { useSaveMoviesInLocalStorage, useMoviesLink } from '@/hooks';
+import { useSaveMoviesInLocalStorage } from '@/hooks';
 
 export function MoviesSection({searchParams}: searchPageParams) {
   const router = useRouter();
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({'movie-name': '', id: 0});
-  const link = useMoviesLink('/api/movies/');
   const {favoriteMovies, setFaviriteMovies} = useSaveMoviesInLocalStorage();
-  const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
+  const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 

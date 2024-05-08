@@ -1,0 +1,9 @@
+.movieBlock {
+  width: 50rem;
+  height: 25rem;
+  max-width: 100%;
+  border-radius: 0.75rem;
+  background-color: #FFF;
+  margin-top: 1.25rem;
+  display: flex;
+}

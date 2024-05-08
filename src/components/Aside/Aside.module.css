@@ -1,6 +1,7 @@
 .aside {
   background-color: var(--main-pink);
   width: 24vw;
+  /* width: 17.5rem; */
   min-height: 100%;
 }
 

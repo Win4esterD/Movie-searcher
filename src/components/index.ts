@@ -11,3 +11,4 @@ export {Stars} from './Stars/Stars';
 export {ModalWindow} from './ModalWindow/ModalWindow';
 export {NotFound} from './NotFound/NotFound';
 export {StarIcon} from './StarIcon/StarIcon';
+export {MovieBlock} from './MovieBlock/MovieBlock';

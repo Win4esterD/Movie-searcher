@@ -1,19 +1,20 @@
-'use client';
-import {useState, useEffect} from 'react';
-import {useMoviesLink} from '@/hooks';
+import {Box, Text} from '@mantine/core';
 import {fetchData} from '@/services/client/fetchers';
+import style from './movies.module.css';
+import { MovieBlock } from '@/components';
 
-export default function Movie({params}: {params: {id: string}}) {
-  const [movieInfo, setMovieInfo] = useState('');
-  useEffect(() => {
-    async function fetch() {
-      const link = location.origin + `/api/movie/?id=${params.id}`;
-      const response = await fetchData(link);
-      setMovieInfo(response);
-    }
-    fetch();
-  }, []);
+export default async function Movie({params}: {params: {id: string}}) {
+  const link = process.env.__NEXT_PRIVATE_ORIGIN;
+  const movieInfo = await fetchData(`${link}/api/movie/?id=${params.id}`);
 
-  console.log(movieInfo);
-  return <p></p>;
+  return (
+    <Box className={style.right}>
+      <Box className={style.contentContainer}>
+        <Text size="sm" c="var(--main-purple)" className={style.movieName}>
+          {movieInfo?.title}
+        </Text>
+        <MovieBlock poster={movieInfo?.poster_path} title={movieInfo?.title} />
+      </Box>
+    </Box>
+  );
 }
