@@ -5,5 +5,35 @@
   border-radius: 0.75rem;
   background-color: #FFF;
   margin-top: 1.25rem;
+}
+
+.innerBlockContent {
   display: flex;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.title {
+  line-height: 1.5rem;
+}
+
+.year {
+  margin-top: 0.3rem;
+}
+
+.otherStats {
+  margin-top: 7.3rem;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.otherStatsDistance {
+  gap: 0.5rem;
+}
+
+.otherStatisticName {
+  color: var(--main-grey);
+  width: 8.75rem;
 }

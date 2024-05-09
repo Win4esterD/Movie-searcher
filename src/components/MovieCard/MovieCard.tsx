@@ -3,7 +3,6 @@ import {Box, Flex, Text} from '@mantine/core';
 import style from './MovieCard.module.css';
 import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
-import star from '/public/assets/img/icons/star.svg';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import starPurple from '/public/assets/img/icons/starPurple.svg';
 import {Dispatch} from 'react';
@@ -11,6 +10,7 @@ import {favoriteMovie} from '@/types/favoriteMovie';
 import {isMovieInFavorites} from '@/utils';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
+import { MovieStatistics } from '../MovieStatistics/MovieStatistics';
 
 type MovieCardProps = {
   imgLink: string;
@@ -88,14 +88,8 @@ export function MovieCard({
           >
             {movieName}
           </Link>
-          <Text className={style.year}>{releaseDate?.slice(0, 4)}</Text>
-          <Flex className={style.movieStatistics}>
-            <Image src={star} alt="Rating icon" width={23.3} height={22.16} />
-            <Flex className={style.ratingAndVotes}>
-              <Text className={style.rating}>{rating.toFixed(1)}</Text>
-              <Text className={style.votes}>({votes})</Text>
-            </Flex>
-          </Flex>
+          <Text className={style.year}>{releaseDate.split('-')[0]}</Text>
+          <MovieStatistics rating={rating} votes={votes} />
           <Flex className={style.genresWrapper}>
             <Text className={style.genres}>Genres</Text>
             <Text>{genresToRender?.slice(0, genresToRender.length - 2)}</Text>
