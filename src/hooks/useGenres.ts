@@ -3,7 +3,7 @@ import {fetchData} from '@/services';
 
 export function useGenres(): any {
   const [genres, setGenres] = useState();
-  const genreAPIurl = location?.origin + '/api/genres/';
+  const genreAPIurl = '/api/genres/';
 
   useEffect(() => {
     async function fetching() {
