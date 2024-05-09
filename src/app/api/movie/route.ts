@@ -4,8 +4,12 @@ import {oneMovie} from '@/services/urls';
 import {authKey} from '../apiKey';
 
 export async function GET(req: NextRequest) {
-    const id = req.nextUrl.search.slice(4);
-    const requestURL = oneMovie + id;
+  const id = req.nextUrl.search.slice(4);
+  const requestURL = oneMovie + id;
+  try {
     const response = await serveMovies(requestURL, authKey);
     return NextResponse.json(response);
+  } catch (err) {
+    console.log(err);
+  }
 }
