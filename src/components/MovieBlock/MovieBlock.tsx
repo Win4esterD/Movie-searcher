@@ -7,15 +7,15 @@ import {monthDictionary} from '@/utils';
 import {monthDictionaryType} from '@/utils/monthDictionary';
 
 type movieBlockProps = {
-  poster: string;
-  title: string;
-  releaseDate: string;
-  rating: number;
-  votes: number;
-  time: number;
-  budget: number;
-  revenue: number;
-  genres: Array<{id: number; name: string}>;
+  poster?: string;
+  title?: string;
+  releaseDate?: string;
+  rating?: number;
+  votes?: number;
+  time?: number;
+  budget?: number;
+  revenue?: number;
+  genres?: Array<{id: number; name: string}>;
 };
 
 export function MovieBlock({
@@ -29,12 +29,13 @@ export function MovieBlock({
   revenue,
   genres,
 }: movieBlockProps): JSX.Element {
-  const dateSplited = releaseDate.split('-');
-  const month = monthDictionary[dateSplited[1] as keyof monthDictionaryType];
-  const day = dateSplited[2];
-  const year = dateSplited[0];
+  const dateSplited = releaseDate && releaseDate.split('-');
+  const month =
+    dateSplited && monthDictionary[dateSplited[1] as keyof monthDictionaryType];
+  const day = dateSplited && dateSplited[2];
+  const year = dateSplited && dateSplited[0];
   let genreString = '';
-  genres.forEach((item, index, array) => {
+  genres?.forEach((item, index, array) => {
     if(index < array.length - 1) {
       genreString += item.name + ', ';
     } else {
@@ -60,7 +61,7 @@ export function MovieBlock({
             {title}
           </Text>
           <Text c="var(--main-grey)" className={style.year}>
-            {releaseDate.split('-')[0]}
+            {releaseDate?.split('-')[0]}
           </Text>
           <MovieStatistics
             rating={rating}
@@ -70,7 +71,7 @@ export function MovieBlock({
           <Flex className={style.otherStats}>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Duration</Text>
-              <Text>{`${Math.floor(time / 60)}h ${time % 60 > 9 ? time % 60 : '0' + (time % 60)}m`}</Text>
+              <Text>{time && `${Math.floor(time / 60)}h ${time % 60 > 9 ? time % 60 : '0' + (time % 60)}m`}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Premiere</Text>
@@ -78,11 +79,11 @@ export function MovieBlock({
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Budget</Text>
-              <Text>${budget.toLocaleString('en-US')}</Text>
+              <Text>${budget?.toLocaleString('en-US')}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Gross worldwide</Text>
-              <Text>${revenue.toLocaleString('en-US')}</Text>
+              <Text>${revenue?.toLocaleString('en-US')}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Genres</Text>
