@@ -35,8 +35,10 @@
   font-weight: 600;
   line-height: 1.5rem;
   color: var(--main-purple);
+  display: block;
   width: 17rem;
   max-width: 100%;
+  text-decoration: none;
 }
 
 .year {
@@ -46,25 +48,6 @@
   letter-spacing: 0;
   color: var(--main-grey);
   margin-top: 0.5rem;
-}
-
-.movieStatistics {
-  margin-top: 0.5rem;
-  gap: 0.5rem;
-}
-
-.ratingAndVotes {
-  gap: 0.5rem;
-}
-
-.rating {
-  font-weight: 600;
-  line-height: 1.25rem;
-}
-
-.votes {
-  color: var(--main-grey);
-  line-height: 1.188rem;
 }
 
 .genresWrapper {

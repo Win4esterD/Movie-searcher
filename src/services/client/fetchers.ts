@@ -1,6 +1,7 @@
 export async function fetchData(url: string) {
   try {
     const response = await fetch(url, {
+      cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
       },

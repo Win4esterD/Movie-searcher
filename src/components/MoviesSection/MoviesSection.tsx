@@ -13,7 +13,7 @@ import {
 import {useMovieFetcher, useGenres} from '@/hooks';
 import {fetchData} from '@/services/';
 import {movie} from '@/types/movie';
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import {Pagination, Loader} from '@mantine/core';
 import {useRouter} from 'next/navigation';
 import {searchPageParams} from '@/types/searchPage';
@@ -21,30 +21,14 @@ import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
 import Link from 'next/link';
-import {MoviesSectionContext} from '@/providers/context';
+import { useSaveMoviesInLocalStorage } from '@/hooks';
 
 export function MoviesSection({searchParams}: searchPageParams) {
-  const [link, setLink] = useState('');
   const router = useRouter();
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({'movie-name': '', id: 0});
-  const [favoriteMovies, setFaviriteMovies] = useState<any>([]);
-
-  useEffect(() => {
-    setLink(location?.origin + '/api/movies/');
-    const savedMovies = localStorage.getItem('movies');
-    if (savedMovies) {
-      setFaviriteMovies(JSON.parse(savedMovies));
-    } else {
-      localStorage.setItem('movies', '[]');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('movies', JSON.stringify(favoriteMovies));
-  }, [favoriteMovies]);
-
-  const movies = useMovieFetcher(link ? link : '', fetchData, searchParams);
+  const {favoriteMovies, setFaviriteMovies} = useSaveMoviesInLocalStorage();
+  const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
 
@@ -57,9 +41,6 @@ export function MoviesSection({searchParams}: searchPageParams) {
 
   return (
     <>
-      <MoviesSectionContext.Provider
-        value={{favoriteMovies, setFaviriteMovies}}
-      >
         <ModalWindow
           modalInfo={modalInfo}
           isOpened={modal}
@@ -132,7 +113,6 @@ export function MoviesSection({searchParams}: searchPageParams) {
             />
           )}
         </Flex>
-      </MoviesSectionContext.Provider>
       {results?.length > 0 && (
         <Pagination
           total={movies?.total_pages}

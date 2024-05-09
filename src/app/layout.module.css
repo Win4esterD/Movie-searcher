@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  height: 165.25rem;
+}
+
 .right {
   min-height: 100%;
   width: 100%;
