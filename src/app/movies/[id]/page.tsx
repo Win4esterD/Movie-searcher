@@ -2,6 +2,7 @@ import {Box, Text} from '@mantine/core';
 import {fetchData} from '@/services/client/fetchers';
 import style from './movies.module.css';
 import {MovieBlock} from '@/components';
+require('events').EventEmitter.defaultMaxListeners = 15;
 
 export default async function Movie({params}: {params: {id: string}}) {
   let link;
