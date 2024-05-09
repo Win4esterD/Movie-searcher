@@ -4,8 +4,14 @@ import style from './movies.module.css';
 import { MovieBlock } from '@/components';
 
 export default async function Movie({params}: {params: {id: string}}) {
-  const link = process.env.__NEXT_PRIVATE_ORIGIN;
-  const movieInfo = await fetchData(`${link}/api/movie/?id=${params.id}`);
+  let link
+
+  if (process.env.VERCEL_ENV === 'production') {
+    link = process.env.VERCEL_URL;
+  } else {
+    link = process.env.__NEXT_PRIVATE_ORIGIN;
+  }
+    const movieInfo = await fetchData(`${link}/api/movie/?id=${params.id}`);
 
   return (
     <Box className={style.right}>
