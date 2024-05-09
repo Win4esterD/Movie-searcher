@@ -2,7 +2,7 @@
 import {Box} from '@mantine/core';
 import style from './Stars.module.css';
 import {StarIcon} from '../StarIcon/StarIcon';
-import { Dispatch} from 'react';
+import {Dispatch} from 'react';
 
 type starsProps = {
   modalInfo: {
@@ -12,7 +12,7 @@ type starsProps = {
   rating: number | null;
   setRating: Dispatch<number>;
   pointState: number;
-  setPointerState: Dispatch<number>,
+  setPointerState: Dispatch<number>;
 };
 
 export function Stars({
@@ -21,7 +21,6 @@ export function Stars({
   pointState,
   setPointerState,
 }: starsProps): JSX.Element {
-
   function highlightStars(id: number) {
     !rating && setPointerState(id);
   }

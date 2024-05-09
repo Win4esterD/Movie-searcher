@@ -35,7 +35,7 @@ export function MovieBlockStars({id, title}: MovieBlockStars): JSX.Element {
         setModal={setModalOpen}
         favoriteMovies={favoriteMovies}
         setFavoriteMovies={setFavoriteMovies}
-        modalInfo={{id: Number(id), 'movie-name': title? title: ''}}
+        modalInfo={{id: Number(id), 'movie-name': title ? title : ''}}
       />
       <Image
         src={!favorite ? starUnliked : starPurple}

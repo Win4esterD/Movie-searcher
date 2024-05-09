@@ -10,7 +10,7 @@ import {favoriteMovie} from '@/types/favoriteMovie';
 import {isMovieInFavorites} from '@/utils';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import { MovieStatistics } from '../MovieStatistics/MovieStatistics';
+import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
 
 type MovieCardProps = {
   imgLink: string;

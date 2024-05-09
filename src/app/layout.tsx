@@ -27,7 +27,7 @@ export default function RootLayout({
           <main>
             <Box className={style.container}>
               <Aside />
-                {children}
+              {children}
             </Box>
           </main>
         </MantineProvider>

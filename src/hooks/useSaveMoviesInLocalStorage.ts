@@ -5,7 +5,9 @@ export function useSaveMoviesInLocalStorage(): [
   Array<favoriteMovie>,
   Dispatch<Array<favoriteMovie>>,
 ] {
-  const [favoriteMovies, setFaviriteMovies] = useState<[] | Array<favoriteMovie>>([]);
+  const [favoriteMovies, setFaviriteMovies] = useState<
+    [] | Array<favoriteMovie>
+  >([]);
 
   useEffect(() => {
     const savedMovies = localStorage.getItem('movies');

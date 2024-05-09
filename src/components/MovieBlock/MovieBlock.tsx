@@ -5,7 +5,7 @@ import {posterBaseLink} from '@/utils';
 import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
 import {monthDictionary} from '@/utils';
 import {monthDictionaryType} from '@/utils/monthDictionary';
-import { MovieBlockStars } from '../MovieBlockStars/MovieBlockStars';
+import {MovieBlockStars} from '../MovieBlockStars/MovieBlockStars';
 
 type movieBlockProps = {
   poster?: string;
@@ -39,7 +39,7 @@ export function MovieBlock({
   const year = dateSplited && dateSplited[0];
   let genreString = '';
   genres?.forEach((item, index, array) => {
-    if(index < array.length - 1) {
+    if (index < array.length - 1) {
       genreString += item.name + ', ';
     } else {
       genreString += item.name;
@@ -47,7 +47,7 @@ export function MovieBlock({
   });
   return (
     <Box className={style.movieBlock}>
-      <MovieBlockStars id={id} title={title? title: ''}/>
+      <MovieBlockStars id={id} title={title ? title : ''} />
       <Box className={style.innerBlockContent}>
         <Image
           src={posterBaseLink + poster}
