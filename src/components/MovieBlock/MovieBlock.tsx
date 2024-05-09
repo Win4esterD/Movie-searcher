@@ -5,6 +5,7 @@ import {posterBaseLink} from '@/utils';
 import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
 import {monthDictionary} from '@/utils';
 import {monthDictionaryType} from '@/utils/monthDictionary';
+import {MovieBlockStars} from '../MovieBlockStars/MovieBlockStars';
 
 type movieBlockProps = {
   poster?: string;
@@ -16,6 +17,7 @@ type movieBlockProps = {
   budget?: number;
   revenue?: number;
   genres?: Array<{id: number; name: string}>;
+  id?: string;
 };
 
 export function MovieBlock({
@@ -28,6 +30,7 @@ export function MovieBlock({
   budget,
   revenue,
   genres,
+  id,
 }: movieBlockProps): JSX.Element {
   const dateSplited = releaseDate && releaseDate.split('-');
   const month =
@@ -36,7 +39,7 @@ export function MovieBlock({
   const year = dateSplited && dateSplited[0];
   let genreString = '';
   genres?.forEach((item, index, array) => {
-    if(index < array.length - 1) {
+    if (index < array.length - 1) {
       genreString += item.name + ', ';
     } else {
       genreString += item.name;
@@ -44,6 +47,7 @@ export function MovieBlock({
   });
   return (
     <Box className={style.movieBlock}>
+      <MovieBlockStars id={id} title={title ? title : ''} />
       <Box className={style.innerBlockContent}>
         <Image
           src={posterBaseLink + poster}
@@ -71,7 +75,10 @@ export function MovieBlock({
           <Flex className={style.otherStats}>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Duration</Text>
-              <Text>{time && `${Math.floor(time / 60)}h ${time % 60 > 9 ? time % 60 : '0' + (time % 60)}m`}</Text>
+              <Text>
+                {time &&
+                  `${Math.floor(time / 60)}h ${time % 60 > 9 ? time % 60 : '0' + (time % 60)}m`}
+              </Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Premiere</Text>

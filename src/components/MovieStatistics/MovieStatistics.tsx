@@ -6,7 +6,7 @@ import star from '/public/assets/img/icons/star.svg';
 type movieStatisticsProps = {
   rating?: number;
   votes?: number;
-  styles?: React.CSSProperties
+  styles?: React.CSSProperties;
 };
 
 export function MovieStatistics({rating, votes, styles}: movieStatisticsProps) {

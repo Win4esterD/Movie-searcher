@@ -1,7 +1,13 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Dispatch} from 'react';
+import {favoriteMovie} from '@/types/favoriteMovie';
 
-export function useSaveMoviesInLocalStorage() {
-  const [favoriteMovies, setFaviriteMovies] = useState<any>([]);
+export function useSaveMoviesInLocalStorage(): [
+  Array<favoriteMovie>,
+  Dispatch<Array<favoriteMovie>>,
+] {
+  const [favoriteMovies, setFaviriteMovies] = useState<
+    [] | Array<favoriteMovie>
+  >([]);
 
   useEffect(() => {
     const savedMovies = localStorage.getItem('movies');
@@ -16,5 +22,5 @@ export function useSaveMoviesInLocalStorage() {
     localStorage.setItem('movies', JSON.stringify(favoriteMovies));
   }, [favoriteMovies]);
 
-  return {favoriteMovies, setFaviriteMovies};
+  return [favoriteMovies, setFaviriteMovies];
 }

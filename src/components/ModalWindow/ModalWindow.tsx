@@ -3,8 +3,8 @@ import {Modal, Box, Divider, Button} from '@mantine/core';
 import {Dispatch, useState, useEffect} from 'react';
 import style from './ModalWindow.module.css';
 import {Stars} from '../Stars/Stars';
-import { favoriteMovie } from '@/types/favoriteMovie';
-import { changeFavoriteMovies } from '@/utils';
+import {favoriteMovie} from '@/types/favoriteMovie';
+import {changeFavoriteMovies} from '@/utils';
 
 type ModalWindowProps = {
   modalInfo: {'movie-name': string; id: number};
@@ -20,14 +20,14 @@ export function ModalWindow({
   setModal,
   favoriteMovies,
   setFavoriteMovies,
-}: ModalWindowProps) {
+}: ModalWindowProps): JSX.Element {
   const [rating, setRating] = useState<null | number>(null);
   const [pointState, setPointerState] = useState(0);
 
   useEffect(() => {
-    if(isOpened) {
-      for(let item of favoriteMovies) {
-        if(item.id === modalInfo.id) {
+    if (isOpened) {
+      for (let item of favoriteMovies) {
+        if (item.id === modalInfo.id) {
           setRating(item.rating);
           setPointerState(item.rating);
         }
@@ -35,7 +35,7 @@ export function ModalWindow({
       return () => {
         setRating(null);
         setPointerState(0);
-      }
+      };
     }
   }, [isOpened]);
 
@@ -51,7 +51,6 @@ export function ModalWindow({
     }
     setModal(false);
   }
-
 
   return (
     <Modal

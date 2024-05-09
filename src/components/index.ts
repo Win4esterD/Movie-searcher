@@ -13,3 +13,4 @@ export {NotFound} from './NotFound/NotFound';
 export {StarIcon} from './StarIcon/StarIcon';
 export {MovieBlock} from './MovieBlock/MovieBlock';
 export {MovieStatistics} from './MovieStatistics/MovieStatistics';
+export {MovieBlockStars} from './MovieBlockStars/MovieBlockStars';
