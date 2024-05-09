@@ -1,17 +1,17 @@
 import {Box, Text} from '@mantine/core';
 import {fetchData} from '@/services/client/fetchers';
 import style from './movies.module.css';
-import { MovieBlock } from '@/components';
+import {MovieBlock} from '@/components';
 
 export default async function Movie({params}: {params: {id: string}}) {
-  let link
+  let link;
 
-  if (process.env.VERCEL_ENV === 'production') {
-    link = process.env.VERCEL_URL;
-  } else {
+  if (process.env.__NEXT_PRIVATE_ORIGIN) {
     link = process.env.__NEXT_PRIVATE_ORIGIN;
+  } else {
+    link = 'https://movie-searcher-brown.vercel.app';
   }
-    const movieInfo = await fetchData(`${link}/api/movie/?id=${params.id}`);
+  const movieInfo = await fetchData(`${link}/api/movie/?id=${params.id}`);
 
   return (
     <Box className={style.right}>
