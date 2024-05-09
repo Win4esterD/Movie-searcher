@@ -5,6 +5,7 @@
   border-radius: 0.75rem;
   background-color: #FFF;
   margin-top: 1.25rem;
+  position: relative;
 }
 
 .innerBlockContent {

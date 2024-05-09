@@ -20,7 +20,7 @@ export function ModalWindow({
   setModal,
   favoriteMovies,
   setFavoriteMovies,
-}: ModalWindowProps) {
+}: ModalWindowProps): JSX.Element {
   const [rating, setRating] = useState<null | number>(null);
   const [pointState, setPointerState] = useState(0);
 

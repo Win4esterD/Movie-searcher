@@ -23,11 +23,11 @@ import {sortFilters} from '@/utils';
 import Link from 'next/link';
 import { useSaveMoviesInLocalStorage } from '@/hooks';
 
-export function MoviesSection({searchParams}: searchPageParams) {
+export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
   const router = useRouter();
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({'movie-name': '', id: 0});
-  const {favoriteMovies, setFaviriteMovies} = useSaveMoviesInLocalStorage();
+  const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
   const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
   const genres: Array<{id: number; name: string}> | undefined = useGenres();
