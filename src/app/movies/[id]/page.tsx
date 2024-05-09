@@ -19,6 +19,10 @@ export default async function Movie({params}: {params: {id: string}}) {
           releaseDate={movieInfo?.release_date}
           rating={movieInfo?.vote_average}
           votes={movieInfo?.vote_count}
+          time={movieInfo?.runtime}
+          budget={movieInfo?.budget}
+          revenue={movieInfo?.revenue}
+          genres={movieInfo?.genres}
         />
       </Box>
     </Box>

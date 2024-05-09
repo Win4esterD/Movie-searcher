@@ -2,7 +2,9 @@ import {Box, Text, Flex} from '@mantine/core';
 import style from './MovieBlock.module.css';
 import Image from 'next/image';
 import {posterBaseLink} from '@/utils';
-import { MovieStatistics } from '../MovieStatistics/MovieStatistics';
+import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
+import {monthDictionary} from '@/utils';
+import {monthDictionaryType} from '@/utils/monthDictionary';
 
 type movieBlockProps = {
   poster: string;
@@ -10,6 +12,10 @@ type movieBlockProps = {
   releaseDate: string;
   rating: number;
   votes: number;
+  time: number;
+  budget: number;
+  revenue: number;
+  genres: Array<{id: number; name: string}>;
 };
 
 export function MovieBlock({
@@ -18,7 +24,23 @@ export function MovieBlock({
   releaseDate,
   rating,
   votes,
+  time,
+  budget,
+  revenue,
+  genres,
 }: movieBlockProps): JSX.Element {
+  const dateSplited = releaseDate.split('-');
+  const month = monthDictionary[dateSplited[1] as keyof monthDictionaryType];
+  const day = dateSplited[2];
+  const year = dateSplited[0];
+  let genreString = '';
+  genres.forEach((item, index, array) => {
+    if(index < array.length - 1) {
+      genreString += item.name + ', ';
+    } else {
+      genreString += item.name;
+    }
+  });
   return (
     <Box className={style.movieBlock}>
       <Box className={style.innerBlockContent}>
@@ -48,23 +70,23 @@ export function MovieBlock({
           <Flex className={style.otherStats}>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Duration</Text>
-              <Text>3h 09m</Text>
+              <Text>{`${Math.floor(time / 60)}h ${time % 60 > 9 ? time % 60 : '0' + (time % 60)}m`}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Premiere</Text>
-              <Text>December 6, 1999</Text>
+              <Text>{`${month} ${day}, ${year}`}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Budget</Text>
-              <Text>$125,000,000</Text>
+              <Text>${budget.toLocaleString('en-US')}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Gross worldwide</Text>
-              <Text>$760,006,945</Text>
+              <Text>${revenue.toLocaleString('en-US')}</Text>
             </Flex>
             <Flex className={style.otherStatsDistance}>
               <Text className={style.otherStatisticName}>Genres</Text>
-              <Text>Dramma, Crime, Fantasy</Text>
+              <Text>{genreString}</Text>
             </Flex>
           </Flex>
         </Box>
