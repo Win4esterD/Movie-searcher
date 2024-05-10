@@ -15,3 +15,50 @@
   margin-top: 2.5rem;
   padding-left: 4.7rem;
 }
+
+.descriptionBlock {
+  border-radius: 0.75rem;
+  background: #fff;
+  margin-top: 1.25rem;
+}
+
+.descriptionBlockContent {
+  padding-left: 1.5rem;
+  padding-top: 1.2rem;
+}
+
+.trailer {
+  padding-bottom: 0.8rem;
+}
+
+.divider {
+  width: 97%;
+}
+
+.dividerIdent {
+  margin-top: 1rem;
+}
+
+.descriptionCaption {
+  margin-top: 0.9rem;
+}
+
+.overview {
+  margin-top: 0.4rem;
+  width: 45.313rem;
+  max-width: 100%;
+}
+
+.productionCaption {
+  margin-top: 2.563rem;
+}
+
+.productCompaniesWrapper {
+  margin-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.productionCompany {
+  line-height: 140%;
+  padding-top: 1%;
+}

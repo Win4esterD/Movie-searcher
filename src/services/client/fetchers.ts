@@ -1,4 +1,6 @@
-export async function fetchData(url: string) {
+import {movie} from '@/types/movie';
+
+export async function fetchData(url: string): Promise<movie> {
   try {
     const response = await fetch(url, {
       cache: 'no-cache',
@@ -10,5 +12,6 @@ export async function fetchData(url: string) {
     return json;
   } catch (err) {
     console.log(err);
+    throw err;
   }
 }
