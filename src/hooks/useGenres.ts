@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {fetchData} from '@/services';
 
 export function useGenres(): any {
-  const [genres, setGenres] = useState();
+  const [genres, setGenres] = useState<any>();
   const genreAPIurl = '/api/genres/';
 
   useEffect(() => {
