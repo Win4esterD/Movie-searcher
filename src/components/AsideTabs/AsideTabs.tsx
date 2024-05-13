@@ -1,8 +1,9 @@
 'use client';
 import style from './AsideTabs.module.css';
 import {Box, Flex} from '@mantine/core';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useRouter} from 'next/navigation';
+import Link from 'next/link';
 
 const selectedTabStyle = {
   color: 'var(--main-purple)',
@@ -11,31 +12,34 @@ const selectedTabStyle = {
 };
 
 export function AsideTabs(): JSX.Element {
-  const pathName = location.pathname;
-  const [selected, setSelected] = useState<Number>(pathName !== "/favorites"? 1: 2);
-  const router = useRouter();
+  const [selected, setSelected] = useState<Number>(0);
+
+  useEffect(() => {
+    const pathName = window.location.pathname;
+    setSelected(pathName !== '/favorites' ? 1 : 2);
+  }, [])
   return (
     <Flex className={style.tabsWrapper} direction="column">
-      <Box
+      <Link
         className={style.tab}
         style={selected === 1 ? selectedTabStyle : {}}
+        href="/"
         onClick={() => {
-          router.push('/');
           setSelected(1);
         }}
       >
         Movies
-      </Box>
-      <Box
+      </Link>
+      <Link
         className={style.tab}
+        href="/favorites"
         style={selected === 2 ? selectedTabStyle : {}}
         onClick={() => {
-          router.push('/favorites')
           setSelected(2);
         }}
       >
         Rated movies
-      </Box>
+      </Link>
     </Flex>
   );
 }
