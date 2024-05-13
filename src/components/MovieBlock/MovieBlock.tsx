@@ -7,7 +7,6 @@ import {monthDictionary} from '@/utils';
 import {monthDictionaryType} from '@/utils/monthDictionary';
 import {MovieBlockStars} from '../MovieBlockStars/MovieBlockStars';
 
-
 type movieBlockProps = {
   poster?: string;
   title?: string;

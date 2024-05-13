@@ -9,7 +9,6 @@ import {useState, useEffect} from 'react';
 import {favoriteMovie} from '@/types/favoriteMovie';
 import {ModalWindow} from '../ModalWindow/ModalWindow';
 
-
 type MovieBlockStars = {
   id?: string;
   title?: string;
@@ -27,7 +26,7 @@ export function MovieBlockStars({
   rating,
   poster,
   votes,
-  genres
+  genres,
 }: MovieBlockStars): JSX.Element {
   const [favoriteMovies, setFavoriteMovies] = useSaveMoviesInLocalStorage();
   const [favorite, setFavorite] = useState<false | favoriteMovie>(false);
@@ -56,7 +55,7 @@ export function MovieBlockStars({
           imgLink: poster ? poster : '',
           releaseDate: releaseDate ? releaseDate : '',
           votes: votes ? votes : 0,
-          genreIds: genres? genres: [0],
+          genreIds: genres ? genres : [0],
           genres: favorite ? favorite.genres : [{id: 0, name: ''}],
         }}
       />

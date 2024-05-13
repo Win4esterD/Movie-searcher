@@ -17,7 +17,7 @@ export function AsideTabs(): JSX.Element {
   useEffect(() => {
     const pathName = window.location.pathname;
     setSelected(pathName !== '/favorites' ? 1 : 2);
-  }, [])
+  }, []);
   return (
     <Flex className={style.tabsWrapper} direction="column">
       <Link

@@ -22,7 +22,7 @@ import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
 import Link from 'next/link';
 import {useSaveMoviesInLocalStorage} from '@/hooks';
-import { favoriteMovie } from '@/types/favoriteMovie';
+import {favoriteMovie} from '@/types/favoriteMovie';
 
 export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
   const router = useRouter();
@@ -35,7 +35,7 @@ export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
     rating: 0,
     votes: 0,
     genreIds: [0],
-    genres: [{id: 0, name: ''}]
+    genres: [{id: 0, name: ''}],
   });
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
   const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);

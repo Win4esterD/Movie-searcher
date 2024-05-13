@@ -3,9 +3,9 @@ import {Box, Pagination, Flex} from '@mantine/core';
 import style from './FavMoviesSection.module.css';
 import {MovieCard} from '../MovieCard/MovieCard';
 import {useSaveMoviesInLocalStorage} from '@/hooks';
-import { useState } from 'react';
-import { favoriteMovie } from '@/types/favoriteMovie';
-import { ModalWindow } from '../ModalWindow/ModalWindow';
+import {useState} from 'react';
+import {favoriteMovie} from '@/types/favoriteMovie';
+import {ModalWindow} from '../ModalWindow/ModalWindow';
 
 export function FavMoviesSection() {
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
@@ -26,9 +26,9 @@ export function FavMoviesSection() {
   let tempArr: favoriteMovie[] = [];
 
   favoriteMovies.forEach((item, i, array) => {
-    if(tempArr.length < 4) {
+    if (tempArr.length < 4) {
       tempArr.push(item);
-      if(tempArr.length === 4) {
+      if (tempArr.length === 4) {
         paginated.push(tempArr);
         tempArr = [];
       }
@@ -43,7 +43,6 @@ export function FavMoviesSection() {
     }
   });
 
-  
   return (
     <>
       <Flex className={style.movieSection}>

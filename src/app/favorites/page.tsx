@@ -1,6 +1,6 @@
-import { Text, Box } from "@mantine/core"
+import {Text, Box} from '@mantine/core';
 import style from './favorites.module.css';
-import { FavMoviesSection } from "@/components";
+import {FavMoviesSection} from '@/components';
 
 export default function Favorites(): JSX.Element {
   return (
