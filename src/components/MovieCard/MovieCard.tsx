@@ -19,9 +19,9 @@ type MovieCardProps = {
   rating: number;
   votes: number;
   genreIds: Array<number>;
-  genres: Array<{id: number; name: string}> | undefined;
+  genres: Array<{id: number; name: string}>;
   setModal: Dispatch<boolean>;
-  setModalInfo: Dispatch<{id: number; 'movie-name': string}>;
+  setModalInfo: Dispatch<favoriteMovie>;
   id: number;
   favoriteMovies: Array<favoriteMovie>;
 };
@@ -50,7 +50,17 @@ export function MovieCard({
   const router = useRouter();
 
   function modalCaller() {
-    setModalInfo({'movie-name': movieName, id: id});
+    setModalInfo({
+      'movie-name': movieName,
+      id: id,
+      imgLink: imgLink,
+      releaseDate: releaseDate,
+      rating: rating,
+      votes: votes,
+      genreIds: genreIds,
+      genres: genres,
+      favoriteMovies: favoriteMovies,
+    });
     setModal(true);
   }
 

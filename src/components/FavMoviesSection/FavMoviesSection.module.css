@@ -1,0 +1,13 @@
+.movieSection {
+  margin-top: 2.4rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-height: 28.4rem;
+}
+
+.paginationBlock {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.5rem;
+}

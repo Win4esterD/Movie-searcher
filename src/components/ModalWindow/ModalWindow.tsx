@@ -7,7 +7,7 @@ import {favoriteMovie} from '@/types/favoriteMovie';
 import {changeFavoriteMovies} from '@/utils';
 
 type ModalWindowProps = {
-  modalInfo: {'movie-name': string; id: number};
+  modalInfo: favoriteMovie;
   isOpened: boolean;
   setModal: Dispatch<boolean>;
   favoriteMovies: Array<favoriteMovie>;
@@ -46,6 +46,11 @@ export function ModalWindow({
           'movie-name': modalInfo['movie-name'],
           id: modalInfo.id,
           rating: rating,
+          imgLink: modalInfo.imgLink,
+          releaseDate: modalInfo.releaseDate,
+          votes: modalInfo.votes,
+          genreIds: modalInfo.genreIds,
+          genres: modalInfo.genres,
         }),
       );
     }
