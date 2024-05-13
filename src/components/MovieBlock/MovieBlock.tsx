@@ -47,7 +47,15 @@ export function MovieBlock({
   });
   return (
     <Box className={style.movieBlock}>
-      <MovieBlockStars id={id} title={title ? title : ''} />
+      <MovieBlockStars
+        id={id}
+        title={title ? title : ''}
+        releaseDate={releaseDate}
+        rating={rating}
+        votes={votes}
+        genres={genres?.map(item => item.id)}
+        poster={poster ? poster : ''}
+      />
       <Box className={style.innerBlockContent}>
         <Image
           src={posterBaseLink + poster}

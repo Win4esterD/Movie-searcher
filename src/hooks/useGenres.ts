@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {fetchData} from '@/services';
 
-export function useGenres(): any {
+export function useGenres(): Array<{id: number; name: string}> {
   const [genres, setGenres] = useState<any>();
   const genreAPIurl = '/api/genres/';
 

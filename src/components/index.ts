@@ -15,3 +15,4 @@ export {MovieBlock} from './MovieBlock/MovieBlock';
 export {MovieStatistics} from './MovieStatistics/MovieStatistics';
 export {MovieBlockStars} from './MovieBlockStars/MovieBlockStars';
 export {YouTubeFrame} from './YouTubeFrame/YouTubeFrame';
+export {FavMoviesSection} from './FavMoviesSection/FavMoviesSection';

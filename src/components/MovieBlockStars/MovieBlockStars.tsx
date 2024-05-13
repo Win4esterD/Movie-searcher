@@ -12,9 +12,22 @@ import {ModalWindow} from '../ModalWindow/ModalWindow';
 type MovieBlockStars = {
   id?: string;
   title?: string;
+  releaseDate?: string;
+  rating?: number;
+  poster?: string;
+  votes?: number;
+  genres?: Array<number>;
 };
 
-export function MovieBlockStars({id, title}: MovieBlockStars): JSX.Element {
+export function MovieBlockStars({
+  id,
+  title,
+  releaseDate,
+  rating,
+  poster,
+  votes,
+  genres,
+}: MovieBlockStars): JSX.Element {
   const [favoriteMovies, setFavoriteMovies] = useSaveMoviesInLocalStorage();
   const [favorite, setFavorite] = useState<false | favoriteMovie>(false);
   const [modalOpened, setModalOpen] = useState(false);
@@ -35,7 +48,16 @@ export function MovieBlockStars({id, title}: MovieBlockStars): JSX.Element {
         setModal={setModalOpen}
         favoriteMovies={favoriteMovies}
         setFavoriteMovies={setFavoriteMovies}
-        modalInfo={{id: Number(id), 'movie-name': title ? title : ''}}
+        modalInfo={{
+          id: Number(id),
+          'movie-name': title ? title : '',
+          rating: favorite ? favorite.rating : 0,
+          imgLink: poster ? poster : '',
+          releaseDate: releaseDate ? releaseDate : '',
+          votes: votes ? votes : 0,
+          genreIds: genres ? genres : [0],
+          genres: favorite ? favorite.genres : [{id: 0, name: ''}],
+        }}
       />
       <Image
         src={!favorite ? starUnliked : starPurple}

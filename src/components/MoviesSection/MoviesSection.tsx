@@ -22,15 +22,25 @@ import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
 import Link from 'next/link';
 import {useSaveMoviesInLocalStorage} from '@/hooks';
+import {favoriteMovie} from '@/types/favoriteMovie';
 
 export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
   const router = useRouter();
   const [modal, setModal] = useState(false);
-  const [modalInfo, setModalInfo] = useState({'movie-name': '', id: 0});
+  const [modalInfo, setModalInfo] = useState<favoriteMovie>({
+    'movie-name': '',
+    id: 0,
+    imgLink: '',
+    releaseDate: '',
+    rating: 0,
+    votes: 0,
+    genreIds: [0],
+    genres: [{id: 0, name: ''}],
+  });
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
   const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
-  const genres: Array<{id: number; name: string}> | undefined = useGenres();
+  const genres: Array<{id: number; name: string}> = useGenres();
 
   function pageChangeHandler(value: number) {
     const newSearchParams = structuredClone(searchParams);
