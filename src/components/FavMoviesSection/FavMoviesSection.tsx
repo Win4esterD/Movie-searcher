@@ -1,7 +1,7 @@
 'use client';
 import {Box, Pagination, Flex} from '@mantine/core';
 import style from './FavMoviesSection.module.css';
-import {MovieCard} from '../MovieCard/MovieCard';
+import {MovieCard, FavMoviesEmptyState} from '@/components';
 import {useSaveMoviesInLocalStorage, useGenres} from '@/hooks';
 import {useState} from 'react';
 import {favoriteMovie} from '@/types/favoriteMovie';
@@ -23,7 +23,6 @@ export function FavMoviesSection() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const genres = useGenres();
-
   const subarray = paginateArray(favoriteMovies, 4);
 
   return (
@@ -36,24 +35,28 @@ export function FavMoviesSection() {
           favoriteMovies={favoriteMovies}
           setFavoriteMovies={setFaviriteMovies}
         />
-        {subarray?.[currentPage - 1]?.map(item => {
-          return (
-            <MovieCard
-              imgLink={item.imgLink}
-              movieName={item['movie-name']}
-              releaseDate={item.releaseDate}
-              rating={item.rating}
-              votes={item.votes}
-              genreIds={item.genreIds}
-              genres={genres}
-              setModal={setModal}
-              setModalInfo={setModalInfo}
-              id={item.id}
-              favoriteMovies={favoriteMovies}
-              key={item.id}
-            />
-          );
-        })}
+        {favoriteMovies.length === 0 ? (
+          <FavMoviesEmptyState />
+        ) : (
+          subarray?.[currentPage - 1]?.map(item => {
+            return (
+              <MovieCard
+                imgLink={item.imgLink}
+                movieName={item['movie-name']}
+                releaseDate={item.releaseDate}
+                rating={item.rating}
+                votes={item.votes}
+                genreIds={item.genreIds}
+                genres={genres}
+                setModal={setModal}
+                setModalInfo={setModalInfo}
+                id={item.id}
+                favoriteMovies={favoriteMovies}
+                key={item.id}
+              />
+            );
+          })
+        )}
       </Flex>
       <Box className={style.paginationBlock}>
         <Pagination
