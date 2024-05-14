@@ -23,7 +23,6 @@ export function ModalWindow({
 }: ModalWindowProps): JSX.Element {
   const [rating, setRating] = useState<null | number>(null);
   const [pointState, setPointerState] = useState(0);
-  
 
   useEffect(() => {
     if (isOpened) {
