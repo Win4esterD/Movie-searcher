@@ -2,10 +2,11 @@
 import {Box, Pagination, Flex} from '@mantine/core';
 import style from './FavMoviesSection.module.css';
 import {MovieCard} from '../MovieCard/MovieCard';
-import {useSaveMoviesInLocalStorage} from '@/hooks';
+import {useSaveMoviesInLocalStorage, useGenres} from '@/hooks';
 import {useState} from 'react';
 import {favoriteMovie} from '@/types/favoriteMovie';
 import {ModalWindow} from '../ModalWindow/ModalWindow';
+import { paginateArray } from '@/utils/paginateArray';
 
 export function FavMoviesSection() {
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
@@ -21,27 +22,11 @@ export function FavMoviesSection() {
     genres: [{id: 0, name: ''}],
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const genres = useGenres();
 
-  const paginated: Array<Array<favoriteMovie>> = [];
-  let tempArr: favoriteMovie[] = [];
 
-  favoriteMovies.forEach((item, i, array) => {
-    if (tempArr.length < 4) {
-      tempArr.push(item);
-      if (tempArr.length === 4) {
-        paginated.push(tempArr);
-        tempArr = [];
-      }
-    } else {
-      paginated.push(tempArr);
-      tempArr = [];
-      tempArr.push(item);
-    }
 
-    if (i === array.length - 1) {
-      paginated.push(tempArr);
-    }
-  });
+  const subarray = paginateArray(favoriteMovies, 4);
 
   return (
     <>
@@ -53,7 +38,7 @@ export function FavMoviesSection() {
           favoriteMovies={favoriteMovies}
           setFavoriteMovies={setFaviriteMovies}
         />
-        {paginated?.[currentPage]?.map(item => {
+        {subarray?.[currentPage - 1]?.map(item => {
           return (
             <MovieCard
               imgLink={item.imgLink}
@@ -62,7 +47,7 @@ export function FavMoviesSection() {
               rating={item.rating}
               votes={item.votes}
               genreIds={item.genreIds}
-              genres={item.genres}
+              genres={genres}
               setModal={setModal}
               setModalInfo={setModalInfo}
               id={item.id}
@@ -77,7 +62,7 @@ export function FavMoviesSection() {
           color="var(--main-purple)"
           className={style.pagination}
           siblings={0}
-          total={Math.floor(favoriteMovies.length / 4)}
+          total={Math.ceil(favoriteMovies.length / 4)}
           value={currentPage}
           onChange={value => setCurrentPage(value)}
         />
