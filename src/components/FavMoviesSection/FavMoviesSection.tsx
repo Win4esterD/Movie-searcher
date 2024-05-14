@@ -6,7 +6,7 @@ import {useSaveMoviesInLocalStorage, useGenres} from '@/hooks';
 import {useState} from 'react';
 import {favoriteMovie} from '@/types/favoriteMovie';
 import {ModalWindow} from '../ModalWindow/ModalWindow';
-import { paginateArray } from '@/utils/paginateArray';
+import {paginateArray} from '@/utils/paginateArray';
 
 export function FavMoviesSection() {
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
@@ -23,8 +23,6 @@ export function FavMoviesSection() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const genres = useGenres();
-
-
 
   const subarray = paginateArray(favoriteMovies, 4);
 
