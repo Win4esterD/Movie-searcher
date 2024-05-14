@@ -57,6 +57,16 @@ export function ModalWindow({
     setModal(false);
   }
 
+  function removeHandler() {
+    const filteredFavorites = favoriteMovies.filter(
+      item => item.id !== modalInfo.id,
+    );
+    setFavoriteMovies(filteredFavorites);
+    setRating(null);
+    setPointerState(0);
+    // setModal(false);
+  }
+
   return (
     <Modal
       opened={isOpened}
@@ -87,6 +97,16 @@ export function ModalWindow({
         >
           Save
         </Button>
+        {rating && (
+          <Button
+            variant="outline"
+            color="var(--main-purple)"
+            onClick={removeHandler}
+            className={style.removeButton}
+          >
+            Remove
+          </Button>
+        )}
       </Box>
     </Modal>
   );

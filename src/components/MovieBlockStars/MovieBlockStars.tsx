@@ -36,9 +36,10 @@ export function MovieBlockStars({
     for (let item of favoriteMovies) {
       if (item.id === Number(id)) {
         setFavorite(item);
-        break;
+        return;
       }
     }
+    setFavorite(false);
   }, [favoriteMovies]);
 
   return (
