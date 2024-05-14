@@ -1,8 +1,7 @@
 'use client';
 import style from './AsideTabs.module.css';
-import {Box, Flex} from '@mantine/core';
+import { Flex} from '@mantine/core';
 import {useState, useEffect} from 'react';
-import {useRouter} from 'next/navigation';
 import Link from 'next/link';
 
 const selectedTabStyle = {
