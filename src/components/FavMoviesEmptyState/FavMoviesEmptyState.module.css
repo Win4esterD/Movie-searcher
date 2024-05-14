@@ -1,0 +1,10 @@
+.emptyStateWrapper {
+  width: 100%;
+  margin-top: 8rem;
+  gap: 0.7rem;
+}
+
+.button {
+  width: 7.625rem;
+  height: 2.5rem;
+}
