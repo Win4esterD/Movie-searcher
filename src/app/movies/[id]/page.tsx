@@ -1,15 +1,15 @@
-import {Box, Divider, Text, Flex} from '@mantine/core';
-import {fetchData} from '@/services/client/fetchers';
+import { Box, Divider, Text, Flex } from '@mantine/core';
+import { fetchData } from '@/services/client/fetchers';
 import style from './movies.module.css';
-import {MovieBlock, YouTubeFrame} from '@/components';
+import { MovieBlock, YouTubeFrame } from '@/components';
 require('events').EventEmitter.defaultMaxListeners = 15;
-import {getMovieTrailer} from '@/utils';
-import {logoBaseURL} from '@/utils/urls';
+import { getMovieTrailer } from '@/utils';
+import { logoBaseURL } from '@/utils/urls';
 import Image from 'next/image';
-import {movie} from '@/types/movie';
-import {MoviesLayout} from '@/layouts';
+import { movie } from '@/types/movie';
+import { MoviesLayout } from '@/layouts';
 
-export default async function Movie({params}: {params: {id: string}}) {
+export default async function Movie({ params }: { params: { id: string } }) {
   let link;
 
   if (process.env.__NEXT_PRIVATE_ORIGIN) {
@@ -50,7 +50,7 @@ export default async function Movie({params}: {params: {id: string}}) {
               </Text>
               <YouTubeFrame
                 youtubeKey={trailer ? trailer : ''}
-                css={{position: 'relative', left: '0.3rem'}}
+                css={{ position: 'relative', left: '0.3rem' }}
               />
               <Divider
                 color="var(--alt-grey)"

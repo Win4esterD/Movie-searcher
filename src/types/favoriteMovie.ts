@@ -6,6 +6,6 @@ export type favoriteMovie = {
   releaseDate: string;
   votes: number;
   genreIds: Array<number>;
-  genres: Array<{id: number; name: string}>;
+  genres: Array<{ id: number; name: string }>;
   favoriteMovies?: Array<favoriteMovie>;
 };

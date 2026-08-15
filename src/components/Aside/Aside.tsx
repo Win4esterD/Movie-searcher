@@ -1,10 +1,10 @@
-import {Box, Flex} from '@mantine/core';
+import { Box, Flex } from '@mantine/core';
 import style from './Aside.module.css';
 import logo from '/public/assets/img/icons/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
-import {poppins} from '../../../public/assets/fonts';
-import {AsideTabs} from '../AsideTabs/AsideTabs';
+import { poppins } from '../../../public/assets/fonts';
+import { AsideTabs } from '../AsideTabs/AsideTabs';
 
 export function Aside(): JSX.Element {
   return (

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import emptyStateIMG from '/public/assets/img/elements/favoritesEmpty.png';
-import {Flex, Text, Button} from '@mantine/core';
+import { Flex, Text, Button } from '@mantine/core';
 import style from './FavMoviesEmptyState.module.css';
 import Link from 'next/link';
 

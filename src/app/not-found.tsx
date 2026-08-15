@@ -1,10 +1,10 @@
-import {Box, Flex, Text, Button} from '@mantine/core';
+import { Box, Flex, Text, Button } from '@mantine/core';
 import logo from '/public/assets/img/icons/logo.svg';
 import errorMessage from '/public/assets/img/elements/errorMessage.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import style from './not-found.module.css';
-import {poppins} from '../../public/assets/fonts';
+import { poppins } from '../../public/assets/fonts';
 
 export default function NotFound() {
   return (

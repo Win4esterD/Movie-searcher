@@ -1,14 +1,14 @@
 'use client';
-import {Box, Button, Container} from '@mantine/core';
+import { Box, Button, Container } from '@mantine/core';
 import style from './SearchInput.module.css';
 import searchImg from '/public/assets/img/icons/search.svg';
 import Image from 'next/image';
-import {searchPageParams} from '@/types/searchPage';
-import {useRouter} from 'next/navigation';
-import {searchParamsParser} from '@/utils';
-import {KeyboardEvent, useState} from 'react';
+import { searchPageParams } from '@/types/searchPage';
+import { useRouter } from 'next/navigation';
+import { searchParamsParser } from '@/utils';
+import { KeyboardEvent, useState } from 'react';
 
-export function SearchInput({searchParams}: searchPageParams) {
+export function SearchInput({ searchParams }: searchPageParams) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
 

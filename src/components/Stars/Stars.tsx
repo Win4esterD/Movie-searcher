@@ -1,8 +1,8 @@
 'use client';
-import {Box} from '@mantine/core';
+import { Box } from '@mantine/core';
 import style from './Stars.module.css';
-import {StarIcon} from '../StarIcon/StarIcon';
-import {Dispatch} from 'react';
+import { StarIcon } from '../StarIcon/StarIcon';
+import { Dispatch } from 'react';
 
 type starsProps = {
   modalInfo: {

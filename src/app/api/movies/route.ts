@@ -1,7 +1,7 @@
-import {NextRequest, NextResponse} from 'next/server';
-import {authKey} from '../apiKey';
-import {serveMovies} from '@/services';
-import {baseUrl, searchUrl} from '@/services';
+import { NextRequest, NextResponse } from 'next/server';
+import { authKey } from '../apiKey';
+import { serveMovies } from '@/services';
+import { baseUrl, searchUrl } from '@/services';
 
 export async function GET(req: NextRequest) {
   let link;

@@ -1,16 +1,16 @@
 'use client';
-import {Box, Flex, Text} from '@mantine/core';
+import { Box, Flex, Text } from '@mantine/core';
 import style from './MovieCard.module.css';
 import Image from 'next/image';
-import {posterBaseLink} from '@/utils';
+import { posterBaseLink } from '@/utils';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import starPurple from '/public/assets/img/icons/starPurple.svg';
-import {Dispatch} from 'react';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {isMovieInFavorites} from '@/utils';
+import { Dispatch } from 'react';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { isMovieInFavorites } from '@/utils';
 import Link from 'next/link';
-import {useRouter} from 'next/navigation';
-import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
+import { useRouter } from 'next/navigation';
+import { MovieStatistics } from '../MovieStatistics/MovieStatistics';
 
 type MovieCardProps = {
   imgLink: string;
@@ -19,7 +19,7 @@ type MovieCardProps = {
   rating: number;
   votes: number;
   genreIds: Array<number>;
-  genres: Array<{id: number; name: string}>;
+  genres: Array<{ id: number; name: string }>;
   setModal: Dispatch<boolean>;
   setModalInfo: Dispatch<favoriteMovie>;
   id: number;

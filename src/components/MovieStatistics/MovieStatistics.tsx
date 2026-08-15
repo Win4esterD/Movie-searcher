@@ -1,6 +1,6 @@
 import style from './MovieStatistics.module.css';
 import Image from 'next/image';
-import {Flex, Text} from '@mantine/core';
+import { Flex, Text } from '@mantine/core';
 import star from '/public/assets/img/icons/star.svg';
 
 type movieStatisticsProps = {
@@ -9,7 +9,11 @@ type movieStatisticsProps = {
   styles?: React.CSSProperties;
 };
 
-export function MovieStatistics({rating, votes, styles}: movieStatisticsProps) {
+export function MovieStatistics({
+  rating,
+  votes,
+  styles,
+}: movieStatisticsProps) {
   return (
     <Flex className={style.movieStatistics} style={Object.assign({}, styles)}>
       <Image src={star} alt="Rating icon" width={23.3} height={22.16} />

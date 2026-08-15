@@ -1,13 +1,13 @@
 'use client';
 import style from './MovieBlockStars.module.css';
 import Image from 'next/image';
-import {Box, Text} from '@mantine/core';
+import { Box, Text } from '@mantine/core';
 import starUnliked from '/public/assets/img/icons/starUnliked.svg';
 import starPurple from '/public/assets/img/icons/starPurple.svg';
-import {useSaveMoviesInLocalStorage} from '@/hooks';
-import {useState, useEffect} from 'react';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {ModalWindow} from '../ModalWindow/ModalWindow';
+import { useSaveMoviesInLocalStorage } from '@/hooks';
+import { useState, useEffect } from 'react';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { ModalWindow } from '../ModalWindow/ModalWindow';
 
 type MovieBlockStars = {
   id?: string;
@@ -57,7 +57,7 @@ export function MovieBlockStars({
           releaseDate: releaseDate ? releaseDate : '',
           votes: votes ? votes : 0,
           genreIds: genres ? genres : [0],
-          genres: favorite ? favorite.genres : [{id: 0, name: ''}],
+          genres: favorite ? favorite.genres : [{ id: 0, name: '' }],
         }}
       />
       <Image

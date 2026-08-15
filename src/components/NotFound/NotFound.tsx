@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {Box} from '@mantine/core';
+import { Box } from '@mantine/core';
 import notFoundImg from '/public/assets/img/elements/empty-search.png';
 import style from './NotFound.module.css';
 

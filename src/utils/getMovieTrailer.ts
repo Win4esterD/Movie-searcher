@@ -1,4 +1,4 @@
-import {video} from '@/types/video';
+import { video } from '@/types/video';
 
 export function getMovieTrailer(videos: Array<video>): string | undefined {
   if (videos) {

@@ -1,5 +1,5 @@
 'use client';
-import {Box, Flex, Text, Notification} from '@mantine/core';
+import { Box, Flex, Text, Notification } from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -10,19 +10,19 @@ import {
   ModalWindow,
   NotFound,
 } from '@/components';
-import {useMovieFetcher, useGenres} from '@/hooks';
-import {fetchData} from '@/services/';
-import {movie} from '@/types/movie';
-import {useState} from 'react';
-import {Pagination, Loader} from '@mantine/core';
-import {useRouter} from 'next/navigation';
-import {searchParams} from '@/types/searchPage';
-import {getMoviesReleaseDates} from '@/utils';
-import {searchParamsParser} from '@/utils';
-import {sortFilters} from '@/utils';
+import { useMovieFetcher, useGenres } from '@/hooks';
+import { fetchData } from '@/services/';
+import { movie } from '@/types/movie';
+import { useState } from 'react';
+import { Pagination, Loader } from '@mantine/core';
+import { useRouter } from 'next/navigation';
+import { searchParams } from '@/types/searchPage';
+import { getMoviesReleaseDates } from '@/utils';
+import { searchParamsParser } from '@/utils';
+import { sortFilters } from '@/utils';
 import Link from 'next/link';
-import {useSaveMoviesInLocalStorage} from '@/hooks';
-import {favoriteMovie} from '@/types/favoriteMovie';
+import { useSaveMoviesInLocalStorage } from '@/hooks';
+import { favoriteMovie } from '@/types/favoriteMovie';
 
 type MovieSearcherProps = {
   searchParams: searchParams;
@@ -43,13 +43,13 @@ export function MoviesSection({
     rating: 0,
     votes: 0,
     genreIds: [0],
-    genres: [{id: 0, name: ''}],
+    genres: [{ id: 0, name: '' }],
   });
 
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
   const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
-  const genres: Array<{id: number; name: string}> = useGenres();
+  const genres: Array<{ id: number; name: string }> = useGenres();
 
   function pageChangeHandler(value: number) {
     const newSearchParams = structuredClone(searchParams);
@@ -143,7 +143,7 @@ export function MoviesSection({
           <Loader
             size="xl"
             color="var(--main-purple)"
-            style={{marginTop: '3.4rem'}}
+            style={{ marginTop: '3.4rem' }}
           />
         )}
       </Flex>

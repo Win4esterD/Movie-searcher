@@ -1,7 +1,7 @@
-import {NumInput} from '../NumInput/NumInput';
-import {searchPageParams} from '@/types/searchPage';
+import { NumInput } from '../NumInput/NumInput';
+import { searchPageParams } from '@/types/searchPage';
 
-export function RatingInputs({searchParams}: searchPageParams): JSX.Element {
+export function RatingInputs({ searchParams }: searchPageParams): JSX.Element {
   return (
     <>
       <NumInput

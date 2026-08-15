@@ -1,12 +1,12 @@
 'use client';
-import {NativeSelect} from '@mantine/core';
+import { NativeSelect } from '@mantine/core';
 import style from './Dropdown.module.css';
 import vectorIMG from '/public/assets/img/icons/vector.svg';
 import Image from 'next/image';
-import {searchParams} from '@/types/searchPage';
-import {searchParamsParser} from '@/utils';
-import {useRouter} from 'next/navigation';
-import {SyntheticEvent, useEffect, useState} from 'react';
+import { searchParams } from '@/types/searchPage';
+import { searchParamsParser } from '@/utils';
+import { useRouter } from 'next/navigation';
+import { SyntheticEvent, useEffect, useState } from 'react';
 
 type dropdownProps = {
   label?: string;
@@ -51,7 +51,7 @@ export function Dropdown({
       className={style.dropdown}
       rightSection={<Image src={vectorIMG} alt="" />}
       label={label}
-      style={{marginTop: label ? 0 : '1.8rem'}}
+      style={{ marginTop: label ? 0 : '1.8rem' }}
       data={newData}
       size="md"
       radius="md"

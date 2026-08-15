@@ -1,4 +1,4 @@
-import {searchParams} from '@/types/searchPage';
+import { searchParams } from '@/types/searchPage';
 
 export function searchParamsParser(
   searchParams: searchParams | undefined,

@@ -1,4 +1,4 @@
-import {video} from './video';
+import { video } from './video';
 
 export type movie = {
   title: string;
@@ -8,12 +8,12 @@ export type movie = {
   vote_average: number;
   vote_count: number;
   genre_ids: Array<number>;
-  videos: {results: Array<video>};
+  videos: { results: Array<video> };
   production_companies: Array<productionCompany>;
   runtime: number;
   budget: number;
   revenue: number;
-  genres: Array<{id: number; name: string}>;
+  genres: Array<{ id: number; name: string }>;
   overview: string;
 };
 

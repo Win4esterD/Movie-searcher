@@ -5,7 +5,7 @@ type YoutubeFrameProps = {
   css?: React.CSSProperties;
 };
 
-export function YouTubeFrame({youtubeKey, css}: YoutubeFrameProps) {
+export function YouTubeFrame({ youtubeKey, css }: YoutubeFrameProps) {
   return (
     <iframe
       style={Object.assign({}, css)}
