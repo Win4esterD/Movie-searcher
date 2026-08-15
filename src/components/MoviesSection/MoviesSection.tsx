@@ -1,5 +1,5 @@
 'use client';
-import {Box, Flex, Text} from '@mantine/core';
+import {Box, Flex, Text, Notification} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -109,11 +109,18 @@ export function MoviesSection({
           label="Sort by"
         />
       </Box>
-      {isCountryProhibited && (
-        <Text color="red">
-          You have Russian or Belorussian IP. Please, use VPN to see the movies
-        </Text>
-      )}
+      <Flex justify='center' mt="4rem">
+        {true && (
+          <Notification
+            title="You have Russian or Belorussian IP"
+            color="red"
+            w="80%"
+            withBorder
+          >
+            Please, use VPN to see the banners of the movies
+          </Notification>
+        )}
+      </Flex>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
         {movies ? (
           results.map((item: movie) => (
