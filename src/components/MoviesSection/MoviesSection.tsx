@@ -1,5 +1,5 @@
 'use client';
-import {Box, Flex} from '@mantine/core';
+import {Box, Flex, Text} from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -16,7 +16,7 @@ import {movie} from '@/types/movie';
 import {useState} from 'react';
 import {Pagination, Loader} from '@mantine/core';
 import {useRouter} from 'next/navigation';
-import {searchPageParams} from '@/types/searchPage';
+import {searchParams} from '@/types/searchPage';
 import {getMoviesReleaseDates} from '@/utils';
 import {searchParamsParser} from '@/utils';
 import {sortFilters} from '@/utils';
@@ -24,7 +24,15 @@ import Link from 'next/link';
 import {useSaveMoviesInLocalStorage} from '@/hooks';
 import {favoriteMovie} from '@/types/favoriteMovie';
 
-export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
+type MovieSearcherProps = {
+  searchParams: searchParams;
+  userCountry: string | null;
+};
+
+export function MoviesSection({
+  searchParams,
+  userCountry,
+}: MovieSearcherProps): JSX.Element {
   const router = useRouter();
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState<favoriteMovie>({
@@ -37,6 +45,7 @@ export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
     genreIds: [0],
     genres: [{id: 0, name: ''}],
   });
+
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
   const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
   const results = movies?.results;
@@ -48,6 +57,9 @@ export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
     const params = searchParamsParser(newSearchParams);
     router.push(params);
   }
+
+  const isCountryProhibited =
+    userCountry === 'BY' || userCountry === 'RU' ? true : false;
 
   return (
     <>
@@ -97,6 +109,11 @@ export function MoviesSection({searchParams}: searchPageParams): JSX.Element {
           label="Sort by"
         />
       </Box>
+      {isCountryProhibited && (
+        <Text color="red">
+          You have Russian or Belorussian IP. Please, use VPN to see the movies
+        </Text>
+      )}
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
         {movies ? (
           results.map((item: movie) => (
