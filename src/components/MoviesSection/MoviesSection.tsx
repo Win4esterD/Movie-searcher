@@ -109,8 +109,8 @@ export function MoviesSection({
           label="Sort by"
         />
       </Box>
-      <Flex justify='center' mt="4rem">
-        {true && (
+      <Flex justify="center" mt="4rem">
+        {isCountryProhibited && (
           <Notification
             title="You have Russian or Belorussian IP"
             color="red"
