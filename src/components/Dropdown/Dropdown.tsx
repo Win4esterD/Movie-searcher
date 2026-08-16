@@ -1,7 +1,6 @@
 'use client';
 import {NativeSelect} from '@mantine/core';
 import style from './Dropdown.module.css';
-import vectorIMG from '/public/assets/img/icons/vector.svg';
 import Image from 'next/image';
 import {searchParams} from '@/types/searchPage';
 import {searchParamsParser} from '@/utils';
@@ -49,7 +48,14 @@ export function Dropdown({
   return (
     <NativeSelect
       className={style.dropdown}
-      rightSection={<Image src={vectorIMG} alt="" />}
+      rightSection={
+        <Image
+          src={'/public/assets/img/icons/vector.svg'}
+          alt=""
+          width={15}
+          height={15}
+        />
+      }
       label={label}
       style={{marginTop: label ? 0 : '1.8rem'}}
       data={newData}
