@@ -1,7 +1,6 @@
 'use client';
-import {Box, Button, Container} from '@mantine/core';
+import {Box, Button} from '@mantine/core';
 import style from './SearchInput.module.css';
-import searchImg from '/public/assets/img/icons/search.svg';
 import Image from 'next/image';
 import {searchPageParams} from '@/types/searchPage';
 import {useRouter} from 'next/navigation';
@@ -28,7 +27,11 @@ export function SearchInput({searchParams}: searchPageParams) {
 
   return (
     <Box className={style.inputWrapper}>
-      <Image src={searchImg} alt="search icon" className={style.image} />
+      <Image
+        src={'/assets/img/icons/search.svg'}
+        alt="search icon"
+        className={style.image}
+      />
       <input
         placeholder="Search movie title"
         className={style.searchInput}
