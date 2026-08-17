@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Dropdown } from './Dropdown';
 import { getMoviesReleaseDates } from '@/utils';
-import { Placeholder } from 'storybook/internal/components';
 
 const meta: Meta<typeof Dropdown> = {
   component: Dropdown,

@@ -1,9 +1,9 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
-import {MantineProvider} from '@mantine/core';
-import {inter} from '../../public/assets/fonts';
+import { MantineProvider } from '@mantine/core';
+import { inter } from '../fonts';
 import '@mantine/core/styles.css';
-import {theme} from '@/theme/theme';
+import { theme } from '@/theme/theme';
 
 export const metadata: Metadata = {
   title: 'Movie Searcher',

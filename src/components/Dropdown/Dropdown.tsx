@@ -50,7 +50,7 @@ export function Dropdown({
       className={style.dropdown}
       rightSection={
         <Image
-          src={'/public/assets/img/icons/vector.svg'}
+          src={'/assets/img/icons/vector.svg'}
           alt=""
           width={15}
           height={15}
