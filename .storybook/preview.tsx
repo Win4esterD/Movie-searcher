@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/nextjs-vite';
-import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '../src/app/globals.css';
+import { MantineDecorator } from './decorators';
 
 const preview: Preview = {
   parameters: {
@@ -22,13 +22,7 @@ const preview: Preview = {
       test: 'todo',
     },
   },
-  decorators: [
-    Story => (
-      <MantineProvider>
-        <Story />
-      </MantineProvider>
-    ),
-  ],
+  decorators: [MantineDecorator],
 };
 
 export default preview;

@@ -65,8 +65,8 @@ export function MovieBlockStars({
             : '/assets/img/icons/starPurple.svg'
         }
         alt="rating"
-        width="23.3"
-        height="22.16"
+        width={23.3}
+        height={22.16}
         onClick={() => setModalOpen(true)}
       />
       {favorite && (

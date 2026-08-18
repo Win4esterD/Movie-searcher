@@ -75,6 +75,8 @@ export function MovieCard({
           }
           alt="Rate movie"
           onClick={modalCaller}
+          width={23.3}
+          height={22.16}
         />
         {typeof inFavorites === 'object' && (
           <Box component="span" className={style.userRating}>
