@@ -1,7 +1,7 @@
 'use client';
 import { Modal, Box, Divider, Button } from '@mantine/core';
 import { Dispatch, useState, useEffect } from 'react';
-import style from './ModalWindow.module.css';
+import style from './RatingModalWindow.module.css';
 import { Stars } from '../Stars/Stars';
 import { favoriteMovie } from '@/types/favoriteMovie';
 import { changeFavoriteMovies } from '@/utils';

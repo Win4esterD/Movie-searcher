@@ -6,7 +6,6 @@ import { mswLoader } from 'msw-storybook-addon/csf3';
 import { http, HttpResponse } from 'msw';
 import { mockGenres, mockMovies } from './mockedAPIdata';
 
-
 const preview = {
   parameters: {
     msw: {

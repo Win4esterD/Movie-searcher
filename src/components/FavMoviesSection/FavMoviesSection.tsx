@@ -5,7 +5,7 @@ import { MovieCard, FavMoviesEmptyState } from '@/components';
 import { useSaveMoviesInLocalStorage, useGenres } from '@/hooks';
 import { useState } from 'react';
 import { favoriteMovie } from '@/types/favoriteMovie';
-import { RatingModalWindow } from '../ModalWindow/ModalWindow';
+import { RatingModalWindow } from '../RatingModalWindow/RatingModalWindow';
 import { paginateArray } from '@/utils/paginateArray';
 
 export function FavMoviesSection() {
