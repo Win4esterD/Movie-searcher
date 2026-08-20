@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/nextjs-vite';
-import { RatingModalWindow } from './RatingModalWindow';
+import { RatingModalWindow } from './ModalWindow';
 import type { favoriteMovie } from '@/types/favoriteMovie';
 import { Button } from '@mantine/core';
 import { useState } from 'react';

@@ -5,7 +5,7 @@ import { MovieCard, FavMoviesEmptyState } from '@/components';
 import { useSaveMoviesInLocalStorage, useGenres } from '@/hooks';
 import { useState } from 'react';
 import { favoriteMovie } from '@/types/favoriteMovie';
-import { RatingModalWindow } from '../RatingModalWindow/RatingModalWindow';
+import { RatingModalWindow } from '../ModalWindow/ModalWindow';
 import { paginateArray } from '@/utils/paginateArray';
 
 export function FavMoviesSection() {
@@ -38,7 +38,7 @@ export function FavMoviesSection() {
         {favoriteMovies.length === 0 ? (
           <FavMoviesEmptyState />
         ) : (
-          subarray?.[currentPage - 1]?.map(item => {
+          subarray?.[currentPage - 1]?.map((item) => {
             return (
               <MovieCard
                 imgLink={item.imgLink}
@@ -65,7 +65,7 @@ export function FavMoviesSection() {
           siblings={0}
           total={Math.ceil(favoriteMovies.length / 4)}
           value={currentPage}
-          onChange={value => setCurrentPage(value)}
+          onChange={(value) => setCurrentPage(value)}
         />
       </Box>
     </>

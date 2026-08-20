@@ -1,7 +1,15 @@
 import { StoryObj, Meta } from '@storybook/nextjs-vite';
-import { FavMoviesSection } from './FavMoviesSection';
-import { favoriteMovie } from '@/types/favoriteMovie';
+import { MovieBlockStars } from './MovieBlockStars';
+import type { favoriteMovie } from '@/types/favoriteMovie';
 import { useEffect } from 'react';
+
+const meta = {
+  component: MovieBlockStars,
+} satisfies Meta<typeof MovieBlockStars>;
+
+export default meta;
+
+type Story = StoryObj<typeof MovieBlockStars>;
 
 const mockMovies: favoriteMovie[] = [
   {
@@ -38,13 +46,6 @@ const setMoviesInLocalStorage = async () => {
   return {};
 };
 
-// Clear localStorage as loader, for empty state
-const clearMoviesFromLocalStorage = async () => {
-  localStorage.removeItem('movies');
-  return {};
-};
-
-// Clear local storage on Story unmount
 const ClearLocalStorageDecorator = (Story: React.FC) => {
   useEffect(() => {
     return () => {
@@ -54,22 +55,17 @@ const ClearLocalStorageDecorator = (Story: React.FC) => {
   return <Story />;
 };
 
-const meta: Meta<typeof FavMoviesSection> = {
-  component: FavMoviesSection,
-};
-
-
-export default meta;
-
-type Story = StoryObj<typeof FavMoviesSection>;
-
 export const Primary = {
+  args: {
+    poster: '/6YIhiAzNB9PPgIPA04tD1xaSBMw.jpg',
+    title: 'X-men 97',
+    releaseDate: '2024-05-21',
+    rating: 9,
+    votes: 113,
+    genres: [1],
+    id: '15',
+  },
   loaders: [setMoviesInLocalStorage],
+  render: (args) => <MovieBlockStars key="primary" {...args} />,
   decorators: [ClearLocalStorageDecorator],
-  render: () => <FavMoviesSection key="primary" />,
-} satisfies Story;
-
-export const Empty = {
-  loaders: [clearMoviesFromLocalStorage],
-  render: () => <FavMoviesSection key="empty" />,
 } satisfies Story;

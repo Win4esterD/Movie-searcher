@@ -5,7 +5,7 @@ import { Box, Text } from '@mantine/core';
 import { useSaveMoviesInLocalStorage } from '@/hooks';
 import { useState, useEffect } from 'react';
 import { favoriteMovie } from '@/types/favoriteMovie';
-import { RatingModalWindow } from '../RatingModalWindow/RatingModalWindow';
+import { RatingModalWindow } from '../ModalWindow/ModalWindow';
 
 type MovieBlockStars = {
   id?: string;
@@ -21,7 +21,6 @@ export function MovieBlockStars({
   id,
   title,
   releaseDate,
-  rating,
   poster,
   votes,
   genres,

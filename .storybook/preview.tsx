@@ -2,9 +2,12 @@ import type { Preview } from '@storybook/nextjs-vite';
 import '@mantine/core/styles.css';
 import '../src/app/globals.css';
 import { MantineDecorator } from './decorators';
+import { mswLoader } from 'msw-storybook-addon/csf3';
+
 
 const preview = {
   parameters: {
+    msw: [],
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -23,6 +26,7 @@ const preview = {
     },
   },
   decorators: [MantineDecorator],
+  loaders: [mswLoader()],
 } satisfies Preview;
 
 export default preview;
