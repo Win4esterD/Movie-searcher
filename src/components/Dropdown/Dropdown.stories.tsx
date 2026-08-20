@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Dropdown } from './Dropdown';
 import { getMoviesReleaseDates } from '@/utils';
 
-const meta: Meta<typeof Dropdown> = {
+const meta = {
   component: Dropdown,
-};
+} satisfies Meta<typeof Dropdown>;
+
 export default meta;
 
 type Story = StoryObj<typeof Dropdown>;
@@ -36,15 +37,13 @@ export const Primary = {
 
 export const WithSearchParams = {
   args: {
+    ...Primary.args,
     searchParams: {
       page: '1',
       query: 'My great query',
       primary_release_year: '13.09.1991',
       popularity_desc: '',
     },
-    data: dataArray,
-    filter: 'WithSearchParams-filter',
-    label: 'WithSearchParams',
   },
 } satisfies Story;
 
@@ -61,7 +60,7 @@ export const ReleaseYear = {
 export const NoLabel = {
   args: {
     searchParams: {},
-    placeholder: 'Select release year',
+    placeholder: 'No label',
     data: getMoviesReleaseDates(),
     filter: 'WithSearchParams-filter',
   },
@@ -69,15 +68,14 @@ export const NoLabel = {
 
 export const NoPlaceholder = {
   args: {
+    ...Primary.args,
+    label: 'No label',
     searchParams: {
       page: '1',
       query: 'My great query',
       primary_release_year: '13.09.1991',
       popularity_desc: '',
     },
-    data: dataArray,
-    filter: 'WithSearchParams-filter',
-    label: 'No placeholder',
   },
 } satisfies Story;
 

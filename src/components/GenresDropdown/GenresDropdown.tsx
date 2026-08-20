@@ -2,7 +2,6 @@ import { searchParams } from '@/types/searchPage';
 import { Dropdown } from '../Dropdown/Dropdown';
 
 type GenresDropdown = {
-  label?: string;
   data?: Array<{ name: string; id: number }>;
   placeholder?: string;
   searchParams: searchParams;
@@ -13,6 +12,7 @@ export function GenresDropdown({
   placeholder = '',
   searchParams,
 }: GenresDropdown) {
+
   const genres = data?.map(genre => {
     return { label: genre.name, value: genre.id.toString() };
   });

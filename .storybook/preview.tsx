@@ -3,7 +3,7 @@ import '@mantine/core/styles.css';
 import '../src/app/globals.css';
 import { MantineDecorator } from './decorators';
 
-const preview: Preview = {
+const preview = {
   parameters: {
     controls: {
       matchers: {
@@ -23,6 +23,6 @@ const preview: Preview = {
     },
   },
   decorators: [MantineDecorator],
-};
+} satisfies Preview;
 
 export default preview;
