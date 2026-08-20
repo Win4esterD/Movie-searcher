@@ -1,10 +1,10 @@
 'use client';
-import {Modal, Box, Divider, Button} from '@mantine/core';
-import {Dispatch, useState, useEffect} from 'react';
+import { Modal, Box, Divider, Button } from '@mantine/core';
+import { Dispatch, useState, useEffect } from 'react';
 import style from './ModalWindow.module.css';
-import {Stars} from '../Stars/Stars';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {changeFavoriteMovies} from '@/utils';
+import { Stars } from '../Stars/Stars';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { changeFavoriteMovies } from '@/utils';
 
 type ModalWindowProps = {
   modalInfo: favoriteMovie;
@@ -14,7 +14,7 @@ type ModalWindowProps = {
   setFavoriteMovies: Dispatch<Array<favoriteMovie>>;
 };
 
-export function ModalWindow({
+export function RatingModalWindow({
   modalInfo,
   isOpened,
   setModal,
@@ -64,7 +64,6 @@ export function ModalWindow({
     setFavoriteMovies(filteredFavorites);
     setRating(null);
     setPointerState(0);
-    // setModal(false);
   }
 
   return (

@@ -1,11 +1,11 @@
 'use client';
 import style from './MovieBlockStars.module.css';
 import Image from 'next/image';
-import {Box, Text} from '@mantine/core';
-import {useSaveMoviesInLocalStorage} from '@/hooks';
-import {useState, useEffect} from 'react';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {ModalWindow} from '../ModalWindow/ModalWindow';
+import { Box, Text } from '@mantine/core';
+import { useSaveMoviesInLocalStorage } from '@/hooks';
+import { useState, useEffect } from 'react';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { RatingModalWindow } from '../RatingModalWindow/RatingModalWindow';
 
 type MovieBlockStars = {
   id?: string;
@@ -42,7 +42,7 @@ export function MovieBlockStars({
 
   return (
     <Box className={style.starBlock}>
-      <ModalWindow
+      <RatingModalWindow
         isOpened={modalOpened}
         setModal={setModalOpen}
         favoriteMovies={favoriteMovies}

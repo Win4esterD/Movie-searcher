@@ -1,12 +1,12 @@
 'use client';
-import {Box, Pagination, Flex} from '@mantine/core';
+import { Box, Pagination, Flex } from '@mantine/core';
 import style from './FavMoviesSection.module.css';
-import {MovieCard, FavMoviesEmptyState} from '@/components';
-import {useSaveMoviesInLocalStorage, useGenres} from '@/hooks';
-import {useState} from 'react';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {ModalWindow} from '../ModalWindow/ModalWindow';
-import {paginateArray} from '@/utils/paginateArray';
+import { MovieCard, FavMoviesEmptyState } from '@/components';
+import { useSaveMoviesInLocalStorage, useGenres } from '@/hooks';
+import { useState } from 'react';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { RatingModalWindow } from '../RatingModalWindow/RatingModalWindow';
+import { paginateArray } from '@/utils/paginateArray';
 
 export function FavMoviesSection() {
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
@@ -19,7 +19,7 @@ export function FavMoviesSection() {
     rating: 0,
     votes: 0,
     genreIds: [0],
-    genres: [{id: 0, name: ''}],
+    genres: [{ id: 0, name: '' }],
   });
   const [currentPage, setCurrentPage] = useState(1);
   const genres = useGenres();
@@ -28,7 +28,7 @@ export function FavMoviesSection() {
   return (
     <>
       <Flex className={style.movieSection}>
-        <ModalWindow
+        <RatingModalWindow
           modalInfo={modalInfo}
           isOpened={modal}
           setModal={setModal}
