@@ -3,6 +3,7 @@ import { RatingModalWindow } from './RatingModalWindow';
 import type { favoriteMovie } from '@/types/favoriteMovie';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
+import { ComponentProps } from 'react';
 
 const meta = {
   component: RatingModalWindow,
@@ -23,7 +24,9 @@ const mockMovie: favoriteMovie = {
   genres: [{ id: 28, name: 'Action' }],
 };
 
-const ModalWrapper = (props: any) => {
+type RatingModalWindowProps = ComponentProps<typeof RatingModalWindow>;
+
+const ModalWrapper = (props: RatingModalWindowProps) => {
   const [isOpened, setModal] = useState(false);
   const [favoriteMovie, setFavoriteMovie] = useState([mockMovie]);
 
@@ -66,7 +69,7 @@ export const FavoriteMovieEmptyArray = {
 };
 
 export const Interactive = {
-  render: (args) => <ModalWrapper {...args} />,
+  render: (args: RatingModalWindowProps) => <ModalWrapper {...args} />,
   args: {
     modalInfo: mockMovie,
     favoriteMovies: [mockMovie],

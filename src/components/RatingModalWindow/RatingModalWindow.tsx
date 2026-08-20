@@ -6,7 +6,7 @@ import { Stars } from '../Stars/Stars';
 import { favoriteMovie } from '@/types/favoriteMovie';
 import { changeFavoriteMovies } from '@/utils';
 
-type ModalWindowProps = {
+type RatingModalWindowProps = {
   modalInfo: favoriteMovie;
   isOpened: boolean;
   setModal: Dispatch<boolean>;
@@ -20,7 +20,7 @@ export function RatingModalWindow({
   setModal,
   favoriteMovies,
   setFavoriteMovies,
-}: ModalWindowProps): JSX.Element {
+}: RatingModalWindowProps): JSX.Element {
   const [rating, setRating] = useState<null | number>(null);
   const [pointState, setPointerState] = useState(0);
 
@@ -59,7 +59,7 @@ export function RatingModalWindow({
 
   function removeHandler() {
     const filteredFavorites = favoriteMovies.filter(
-      item => item.id !== modalInfo.id,
+      (item) => item.id !== modalInfo.id,
     );
     setFavoriteMovies(filteredFavorites);
     setRating(null);
