@@ -3,11 +3,24 @@ import '@mantine/core/styles.css';
 import '../src/app/globals.css';
 import { MantineDecorator } from './decorators';
 import { mswLoader } from 'msw-storybook-addon/csf3';
+import { http, HttpResponse } from 'msw';
+import { mockGenres, mockMovies } from './mockedAPIdata';
 
 
 const preview = {
   parameters: {
-    msw: [],
+    msw: {
+      handlers: [
+        // intercept GET /api/genres/
+        http.get('/api/genres/', () => {
+          return HttpResponse.json(mockGenres);
+        }),
+        // intercept GET /api/movies/
+        http.get('/api/movies/', () => {
+          return HttpResponse.json(mockMovies);
+        }),
+      ],
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
