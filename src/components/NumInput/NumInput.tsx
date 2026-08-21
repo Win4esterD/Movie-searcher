@@ -8,7 +8,6 @@ import {useRouter} from 'next/navigation';
 type NumInputProps = {
   label?: string;
   placeholder?: string;
-  filter?: string;
   searchParams: searchParams;
   direction?: 'from' | 'to';
 };
@@ -26,12 +25,12 @@ export function NumInput({
   function changeHandler(value: string | number) {
     const newSearchParams = structuredClone(searchParams);
     if (direction === 'to') {
-      newSearchParams!['vote_average.lte' as keyof searchParams] =
+      newSearchParams!['vote_average.lte' ] =
         value.toString();
       const url = searchParamsParser(newSearchParams);
       router.push(url);
     } else {
-      newSearchParams!['vote_average.gte' as keyof searchParams] =
+      newSearchParams!['vote_average.gte'] =
         value.toString();
       const url = searchParamsParser(newSearchParams);
       router.push(url);
