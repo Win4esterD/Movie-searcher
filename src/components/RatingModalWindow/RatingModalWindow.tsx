@@ -83,7 +83,6 @@ export function RatingModalWindow({
           {modalInfo['movie-name']}
         </Box>
         <Stars
-          modalInfo={modalInfo}
           setRating={setRating}
           rating={rating}
           pointState={pointState}

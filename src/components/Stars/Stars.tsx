@@ -5,10 +5,6 @@ import {StarIcon} from '../StarIcon/StarIcon';
 import {Dispatch} from 'react';
 
 type starsProps = {
-  modalInfo: {
-    id: number;
-    'movie-name': string;
-  };
   rating: number | null;
   setRating: Dispatch<number>;
   pointState: number;
