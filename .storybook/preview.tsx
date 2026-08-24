@@ -7,7 +7,11 @@ import { http, HttpResponse } from 'msw';
 import { mockGenres, mockMovies } from './mockedAPIdata';
 
 const preview = {
+  tags: ['autodocs'],
   parameters: {
+    docs: {
+      toc: true, // 👈 Enables the table of contents
+    },
     msw: {
       handlers: [
         // intercept GET /api/genres/
