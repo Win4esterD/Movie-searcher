@@ -37,7 +37,7 @@ export function SearchInput({ searchParams }: searchPageParams) {
       <input
         placeholder="Search movie title"
         className={style.searchInput}
-        onChange={e => setSearchQuery(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={onKeyUpSearch}
       ></input>
       <Button

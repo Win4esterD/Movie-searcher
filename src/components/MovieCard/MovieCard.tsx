@@ -38,7 +38,7 @@ export function MovieCard({
   favoriteMovies,
 }: MovieCardProps): JSX.Element {
   const genresToRender = genres
-    ?.map(item => {
+    ?.map((item) => {
       if (genreIds?.includes(item.id)) {
         return item.name + ', ';
       }

@@ -12,8 +12,7 @@ export function GenresDropdown({
   placeholder = '',
   searchParams,
 }: GenresDropdown) {
-
-  const genres = data?.map(genre => {
+  const genres = data?.map((genre) => {
     return { label: genre.name, value: genre.id.toString() };
   });
   return (

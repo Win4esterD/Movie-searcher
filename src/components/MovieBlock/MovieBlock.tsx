@@ -1,11 +1,11 @@
-import {Box, Text, Flex} from '@mantine/core';
+import { Box, Text, Flex } from '@mantine/core';
 import style from './MovieBlock.module.css';
 import Image from 'next/image';
-import {posterBaseLink} from '@/utils';
-import {MovieStatistics} from '../MovieStatistics/MovieStatistics';
-import {monthDictionary} from '@/utils';
-import {monthDictionaryType} from '@/utils/monthDictionary';
-import {MovieBlockStars} from '../MovieBlockStars/MovieBlockStars';
+import { posterBaseLink } from '@/utils';
+import { MovieStatistics } from '../MovieStatistics/MovieStatistics';
+import { monthDictionary } from '@/utils';
+import { monthDictionaryType } from '@/utils/monthDictionary';
+import { MovieBlockStars } from '../MovieBlockStars/MovieBlockStars';
 
 type movieBlockProps = {
   poster?: string;
@@ -16,7 +16,7 @@ type movieBlockProps = {
   time?: number;
   budget?: number;
   revenue?: number;
-  genres?: Array<{id: number; name: string}>;
+  genres?: Array<{ id: number; name: string }>;
   id?: string;
 };
 
@@ -53,7 +53,7 @@ export function MovieBlock({
         releaseDate={releaseDate}
         rating={rating}
         votes={votes}
-        genres={genres?.map(item => item.id)}
+        genres={genres?.map((item) => item.id)}
         poster={poster ? poster : ''}
       />
       <Box className={style.innerBlockContent}>
@@ -78,7 +78,7 @@ export function MovieBlock({
           <MovieStatistics
             rating={rating}
             votes={votes}
-            styles={{marginTop: '0.6rem', paddingLeft: '0.2rem'}}
+            styles={{ marginTop: '0.6rem', paddingLeft: '0.2rem' }}
           />
           <Flex className={style.otherStats}>
             <Flex className={style.otherStatsDistance}>

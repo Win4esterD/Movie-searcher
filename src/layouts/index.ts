@@ -1,1 +1,1 @@
-export {MoviesLayout} from './MoviesLayout/MoviesLayout';
+export { MoviesLayout } from './MoviesLayout/MoviesLayout';

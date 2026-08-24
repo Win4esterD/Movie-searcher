@@ -46,4 +46,3 @@ export const HugeAmountOfVotes = {
     votes: 45234523452345,
   },
 } satisfies Story;
-

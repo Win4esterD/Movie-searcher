@@ -19,7 +19,7 @@ export async function serveGenres(url: string, authKey: string): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'GET',
-      next: {revalidate: 3600},
+      next: { revalidate: 3600 },
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${authKey}`,

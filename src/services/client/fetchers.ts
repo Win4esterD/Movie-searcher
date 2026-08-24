@@ -1,4 +1,4 @@
-import {movie} from '@/types/movie';
+import { movie } from '@/types/movie';
 
 export async function fetchData(url: string): Promise<movie> {
   try {

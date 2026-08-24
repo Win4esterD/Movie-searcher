@@ -1,4 +1,4 @@
-import {searchParams} from '@/types/searchPage';
+import { searchParams } from '@/types/searchPage';
 
 export function searchParamsParser(
   searchParams: searchParams | undefined,
@@ -6,7 +6,7 @@ export function searchParamsParser(
   if (searchParams) {
     const paramsArr = Object.entries(searchParams);
     let paramsStr = '?';
-    paramsArr.forEach(item => (paramsStr += `${item[0]}=${item[1]}&`));
+    paramsArr.forEach((item) => (paramsStr += `${item[0]}=${item[1]}&`));
     return paramsStr;
   }
   return '';

@@ -58,7 +58,6 @@ const meta: Meta<typeof FavMoviesSection> = {
   component: FavMoviesSection,
 };
 
-
 export default meta;
 
 type Story = StoryObj<typeof meta>;

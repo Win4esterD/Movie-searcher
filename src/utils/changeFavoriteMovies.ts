@@ -1,4 +1,4 @@
-import {favoriteMovie} from '@/types/favoriteMovie';
+import { favoriteMovie } from '@/types/favoriteMovie';
 
 export function changeFavoriteMovies(
   arr: Array<favoriteMovie>,

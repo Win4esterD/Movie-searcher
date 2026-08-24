@@ -26,7 +26,7 @@ export const CustomCSS = {
     youtubeKey: 'dQw4w9WgXcQ',
     css: {
       border: '5px solid red',
-      backgroundColor: 'red'
+      backgroundColor: 'red',
     },
   },
 } satisfies Story;
