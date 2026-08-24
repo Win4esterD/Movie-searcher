@@ -11,7 +11,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof RatingModalWindow>;
+type Story = StoryObj<typeof meta>;
 
 const mockMovie: favoriteMovie = {
   'movie-name': 'The Dark Knight',
@@ -71,8 +71,6 @@ export const FavoriteMovieEmptyArray = {
 export const Interactive = {
   render: (args: RatingModalWindowProps) => <ModalWrapper {...args} />,
   args: {
-    modalInfo: mockMovie,
-    favoriteMovies: [mockMovie],
-    setFavoriteMovies: () => {},
+    ...Primary.args,
   },
 } satisfies Story;

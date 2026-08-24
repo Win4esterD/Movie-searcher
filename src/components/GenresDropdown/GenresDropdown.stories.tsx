@@ -21,7 +21,7 @@ const data = [
   id: number;
 }[];
 
-type Story = StoryObj<typeof GenresDropdown>;
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {

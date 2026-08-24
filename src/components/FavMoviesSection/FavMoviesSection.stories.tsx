@@ -61,7 +61,7 @@ const meta: Meta<typeof FavMoviesSection> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FavMoviesSection>;
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   loaders: [setMoviesInLocalStorage],

@@ -7,6 +7,6 @@ const meta: Meta<typeof FavMoviesEmptyState> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FavMoviesEmptyState>;
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;

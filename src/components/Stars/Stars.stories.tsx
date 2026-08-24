@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { Stars } from './Stars';
-import { useState } from 'react';
+import { useState, ComponentProps } from 'react';
 
 const meta = {
   component: Stars,
@@ -8,7 +8,14 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Stars>;
+type Story = StoryObj<typeof meta>;
+
+const defaultArgs: ComponentProps<typeof Stars> = {
+  rating: 0,
+  setRating: () => {},
+  pointState: 0,
+  setPointerState: () => {},
+};
 
 export const Primary = {
   render: () => {
@@ -24,6 +31,7 @@ export const Primary = {
       />
     );
   },
+  args: defaultArgs,
 } satisfies Story;
 
 export const PredefinedRating = {
@@ -40,4 +48,5 @@ export const PredefinedRating = {
       />
     );
   },
+  args: defaultArgs,
 } satisfies Story;

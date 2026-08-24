@@ -7,6 +7,6 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof NotFound>;
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;

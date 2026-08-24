@@ -7,6 +7,6 @@ const meta: Meta<typeof Aside> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Aside>;
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {} satisfies Story;

@@ -8,7 +8,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Dropdown>;
+type Story = StoryObj<typeof meta>;
 
 const dataArray = [
   'Govno',

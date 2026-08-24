@@ -9,7 +9,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof MovieBlockStars>;
+type Story = StoryObj<typeof meta>;
 
 const mockMovies: favoriteMovie[] = [
   {
