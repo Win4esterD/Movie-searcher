@@ -1,12 +1,12 @@
 'use client';
-import {Modal, Box, Divider, Button} from '@mantine/core';
-import {Dispatch, useState, useEffect} from 'react';
-import style from './ModalWindow.module.css';
-import {Stars} from '../Stars/Stars';
-import {favoriteMovie} from '@/types/favoriteMovie';
-import {changeFavoriteMovies} from '@/utils';
+import { Modal, Box, Divider, Button } from '@mantine/core';
+import { Dispatch, useState, useEffect } from 'react';
+import style from './RatingModalWindow.module.css';
+import { Stars } from '../Stars/Stars';
+import { favoriteMovie } from '@/types/favoriteMovie';
+import { changeFavoriteMovies } from '@/utils';
 
-type ModalWindowProps = {
+type RatingModalWindowProps = {
   modalInfo: favoriteMovie;
   isOpened: boolean;
   setModal: Dispatch<boolean>;
@@ -14,13 +14,13 @@ type ModalWindowProps = {
   setFavoriteMovies: Dispatch<Array<favoriteMovie>>;
 };
 
-export function ModalWindow({
+export function RatingModalWindow({
   modalInfo,
   isOpened,
   setModal,
   favoriteMovies,
   setFavoriteMovies,
-}: ModalWindowProps): JSX.Element {
+}: RatingModalWindowProps): JSX.Element {
   const [rating, setRating] = useState<null | number>(null);
   const [pointState, setPointerState] = useState(0);
 
@@ -59,12 +59,11 @@ export function ModalWindow({
 
   function removeHandler() {
     const filteredFavorites = favoriteMovies.filter(
-      item => item.id !== modalInfo.id,
+      (item) => item.id !== modalInfo.id,
     );
     setFavoriteMovies(filteredFavorites);
     setRating(null);
     setPointerState(0);
-    // setModal(false);
   }
 
   return (
@@ -84,7 +83,6 @@ export function ModalWindow({
           {modalInfo['movie-name']}
         </Box>
         <Stars
-          modalInfo={modalInfo}
           setRating={setRating}
           rating={rating}
           pointState={pointState}

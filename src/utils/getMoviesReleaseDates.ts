@@ -6,6 +6,5 @@ export function getMoviesReleaseDates() {
   for (let i = currentYear; i >= firstEverMovie; i--) {
     dates.push(i.toString());
   }
-
   return dates;
 }

@@ -11,4 +11,7 @@ export type searchParams = {
   'vote_count.desc'?: string;
   'primary_release_date.desc'?: string;
   'title.desc'?: string;
+  with_genres?: string;
+  'vote_average.lte'?: string;
+  'vote_average.gte'?: string;
 };

@@ -1,6 +1,5 @@
 {
-  "arrowParens": "avoid",
-  "bracketSpacing": false,
+  "arrowParens": "always",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "printWidth": 80,
