@@ -41,7 +41,6 @@ const mockMovies: favoriteMovie[] = [
   },
 ];
 
-
 export const Primary = {
   args: {
     imgLink: '/6YIhiAzNB9PPgIPA04tD1xaSBMw.jpg',

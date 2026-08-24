@@ -1,7 +1,7 @@
-import {NumInput} from '../NumInput/NumInput';
-import {searchPageParams} from '@/types/searchPage';
+import { NumInput } from '../NumInput/NumInput';
+import { searchPageParams } from '@/types/searchPage';
 
-export function RatingInputs({searchParams}: searchPageParams): JSX.Element {
+export function RatingInputs({ searchParams }: searchPageParams): JSX.Element {
   return (
     <>
       <NumInput
@@ -10,11 +10,7 @@ export function RatingInputs({searchParams}: searchPageParams): JSX.Element {
         searchParams={searchParams}
         direction="from"
       />
-      <NumInput
-        placeholder="To"
-        searchParams={searchParams}
-        direction="to"
-      />
+      <NumInput placeholder="To" searchParams={searchParams} direction="to" />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import style from './MovieStatistics.module.css';
 import Image from 'next/image';
-import {Flex, Text} from '@mantine/core';
+import { Flex, Text } from '@mantine/core';
 
 type movieStatisticsProps = {
   rating?: number;
@@ -8,7 +8,11 @@ type movieStatisticsProps = {
   styles?: React.CSSProperties;
 };
 
-export function MovieStatistics({rating, votes, styles}: movieStatisticsProps) {
+export function MovieStatistics({
+  rating,
+  votes,
+  styles,
+}: movieStatisticsProps) {
   return (
     <Flex className={style.movieStatistics} style={Object.assign({}, styles)}>
       <Image

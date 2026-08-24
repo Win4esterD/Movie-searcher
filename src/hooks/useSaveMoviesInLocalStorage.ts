@@ -1,5 +1,5 @@
-import {useState, useEffect, Dispatch} from 'react';
-import {favoriteMovie} from '@/types/favoriteMovie';
+import { useState, useEffect, Dispatch } from 'react';
+import { favoriteMovie } from '@/types/favoriteMovie';
 
 export function useSaveMoviesInLocalStorage(): [
   Array<favoriteMovie>,

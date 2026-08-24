@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {Flex, Text, Button} from '@mantine/core';
+import { Flex, Text, Button } from '@mantine/core';
 import style from './FavMoviesEmptyState.module.css';
 import Link from 'next/link';
 

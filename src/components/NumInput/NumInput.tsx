@@ -1,9 +1,9 @@
 'use client';
-import {NumberInput} from '@mantine/core';
+import { NumberInput } from '@mantine/core';
 import style from './NumInput.module.css';
-import {searchParamsParser} from '@/utils';
-import {searchParams} from '@/types/searchPage';
-import {useRouter} from 'next/navigation';
+import { searchParamsParser } from '@/utils';
+import { searchParams } from '@/types/searchPage';
+import { useRouter } from 'next/navigation';
 
 type NumInputProps = {
   label?: string;
@@ -25,13 +25,11 @@ export function NumInput({
   function changeHandler(value: string | number) {
     const newSearchParams = structuredClone(searchParams);
     if (direction === 'to') {
-      newSearchParams!['vote_average.lte' ] =
-        value.toString();
+      newSearchParams!['vote_average.lte'] = value.toString();
       const url = searchParamsParser(newSearchParams);
       router.push(url);
     } else {
-      newSearchParams!['vote_average.gte'] =
-        value.toString();
+      newSearchParams!['vote_average.gte'] = value.toString();
       const url = searchParamsParser(newSearchParams);
       router.push(url);
     }
@@ -41,7 +39,7 @@ export function NumInput({
     <NumberInput
       className={style.numInput}
       label={label}
-      style={{marginTop: label ? 0 : '1.8rem'}}
+      style={{ marginTop: label ? 0 : '1.8rem' }}
       placeholder={placeholder}
       size="md"
       radius="md"
