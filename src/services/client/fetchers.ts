@@ -1,4 +1,4 @@
-import { MovieResponseType } from '@/types/movie';
+import { MovieResponseType, MovieType } from '@/types/movie';
 import { GenreType } from '@/types/GenreType';
 
 export async function fetchMovies(url: string): Promise<MovieResponseType> {
@@ -8,6 +8,18 @@ export async function fetchMovies(url: string): Promise<MovieResponseType> {
       'Content-Type': 'application/json',
     },
   });
+  const json = await response.json();
+  return json;
+}
+
+export async function fetchSingleMovie(url: string): Promise<MovieType> {
+  const response = await fetch(url, {
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
   const json = await response.json();
   return json;
 }

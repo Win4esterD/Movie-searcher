@@ -1,12 +1,12 @@
 import { Box, Divider, Text, Flex } from '@mantine/core';
-import { fetchData } from '@/services/client/fetchers';
+import { fetchSingleMovie } from '@/services/client/fetchers';
 import style from './movies.module.css';
 import { MovieBlock, YouTubeFrame } from '@/components';
 require('events').EventEmitter.defaultMaxListeners = 15;
 import { getMovieTrailer } from '@/utils';
 import { logoBaseURL } from '@/utils/urls';
 import Image from 'next/image';
-import { movie } from '@/types/movie';
+import { MovieType } from '@/types/movie';
 import { MoviesLayout } from '@/layouts';
 
 export default async function Movie({ params }: { params: { id: string } }) {
@@ -17,9 +17,10 @@ export default async function Movie({ params }: { params: { id: string } }) {
   } else {
     link = 'https://movie-searcher-brown.vercel.app';
   }
-  const movieInfo: movie = await fetchData(
+  const movieInfo: MovieType = await fetchSingleMovie(
     `${link}/api/movie/?id=${params.id}`,
   );
+
   const videos = movieInfo?.videos?.results;
   const trailer = getMovieTrailer(videos);
 
