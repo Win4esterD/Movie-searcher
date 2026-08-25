@@ -1,6 +1,6 @@
-import { movie } from '@/types/movie';
+import { MovieResponseType } from '@/types/movie';
 
-export async function fetchData(url: string): Promise<movie> {
+export async function fetchData(url: string): Promise<MovieResponseType> {
   try {
     const response = await fetch(url, {
       cache: 'no-cache',

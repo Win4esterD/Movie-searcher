@@ -1,5 +1,5 @@
 'use client';
-import { Box, Flex } from '@mantine/core';
+import { Box, Flex, Text } from '@mantine/core';
 import style from './MoviesSection.module.css';
 import {
   SearchInput,
@@ -10,9 +10,9 @@ import {
   RatingModalWindow,
   NotFound,
 } from '@/components';
-import { useMovieFetcher, useGenres } from '@/hooks';
+import { useGenres } from '@/hooks';
 import { fetchData } from '@/services/';
-import { movie } from '@/types/movie';
+import { MovieType } from '@/types/movie';
 import { useState } from 'react';
 import { Pagination, Loader } from '@mantine/core';
 import { useRouter } from 'next/navigation';
@@ -23,6 +23,7 @@ import { sortFilters } from '@/utils';
 import Link from 'next/link';
 import { useSaveMoviesInLocalStorage } from '@/hooks';
 import { favoriteMovie } from '@/types/favoriteMovie';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
   const router = useRouter();
@@ -38,8 +39,15 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
     genres: [{ id: 0, name: '' }],
   });
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
-  const movies = useMovieFetcher('/api/movies/', fetchData, searchParams);
-  const results = movies?.results;
+  const queryClient = useQueryClient();
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['movies', searchParams],
+    queryFn: () => fetchData(`/api/movies/${searchParamsParser(searchParams)}`),
+  });
+
+  const movies = data?.results;
+
   const genres: Array<{ id: number; name: string }> = useGenres();
 
   function pageChangeHandler(value: number) {
@@ -98,8 +106,8 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
         />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
-        {movies ? (
-          results.map((item: movie) => (
+        {movies &&
+          movies.map((item: MovieType) => (
             <MovieCard
               key={item.id}
               imgLink={item.poster_path}
@@ -114,8 +122,8 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
               id={item.id}
               favoriteMovies={favoriteMovies}
             />
-          ))
-        ) : (
+          ))}
+        {isLoading && (
           <Loader
             size="xl"
             color="var(--main-purple)"
@@ -123,17 +131,18 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
           />
         )}
       </Flex>
-      {results?.length > 0 && (
+      {movies && movies.length > 0 && (
         <Pagination
-          total={movies?.total_pages}
+          total={data?.total_pages}
           boundaries={0}
           color="var(--main-purple)"
           className={style.pagination}
           onChange={pageChangeHandler}
-          value={movies ? movies.page : 1}
+          value={data ? data.page : 1}
         />
       )}
-      {results?.length === 0 && <NotFound />}
+      {movies?.length === 0 && <NotFound />}
+      {error && <Text c="red">Error while searching the movies</Text>}
     </>
   );
 }
