@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core';
 import { inter } from '../fonts';
 import '@mantine/core/styles.css';
 import { theme } from '@/theme/theme';
+import { TanStackProvider } from '@/providers/TanStackProvider';
 
 export const metadata: Metadata = {
   title: 'Movie Searcher',
@@ -21,7 +22,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <TanStackProvider>
+          <MantineProvider theme={theme}>{children}</MantineProvider>
+        </TanStackProvider>
       </body>
     </html>
   );
