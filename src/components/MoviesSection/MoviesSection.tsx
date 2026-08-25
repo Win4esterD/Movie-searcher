@@ -13,7 +13,6 @@ import {
 import { useGenres } from '@/hooks';
 import { fetchMovies } from '@/services/';
 import { MovieType } from '@/types/movie';
-import { GenreType } from '@/types/GenreType';
 import { useState } from 'react';
 import { Pagination, Loader } from '@mantine/core';
 import { useRouter } from 'next/navigation';
@@ -24,7 +23,7 @@ import { sortFilters } from '@/utils';
 import Link from 'next/link';
 import { useSaveMoviesInLocalStorage } from '@/hooks';
 import { favoriteMovie } from '@/types/favoriteMovie';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 
 export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
   const router = useRouter();
@@ -45,6 +44,7 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
     queryKey: ['movies', searchParams],
     queryFn: () =>
       fetchMovies(`/api/movies/${searchParamsParser(searchParams)}`),
+    placeholderData: keepPreviousData,
   });
 
   const movies = data?.results;
