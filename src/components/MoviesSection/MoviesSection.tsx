@@ -11,8 +11,9 @@ import {
   NotFound,
 } from '@/components';
 import { useGenres } from '@/hooks';
-import { fetchData } from '@/services/';
+import { fetchMovies } from '@/services/';
 import { MovieType } from '@/types/movie';
+import { GenreType } from '@/types/GenreType';
 import { useState } from 'react';
 import { Pagination, Loader } from '@mantine/core';
 import { useRouter } from 'next/navigation';
@@ -42,12 +43,13 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['movies', searchParams],
-    queryFn: () => fetchData(`/api/movies/${searchParamsParser(searchParams)}`),
+    queryFn: () =>
+      fetchMovies(`/api/movies/${searchParamsParser(searchParams)}`),
   });
 
   const movies = data?.results;
 
-  const genres: Array<{ id: number; name: string }> = useGenres();
+  const genres = useGenres().data;
 
   function pageChangeHandler(value: number) {
     const newSearchParams = structuredClone(searchParams);
@@ -105,7 +107,7 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
         />
       </Box>
       <Flex wrap="wrap" justify="center" className={style.moviesBlock}>
-        {movies &&
+        {movies && genres &&
           movies.map((item: MovieType) => (
             <MovieCard
               key={item.id}
