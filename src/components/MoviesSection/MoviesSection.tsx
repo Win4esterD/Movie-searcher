@@ -23,7 +23,7 @@ import { sortFilters } from '@/utils';
 import Link from 'next/link';
 import { useSaveMoviesInLocalStorage } from '@/hooks';
 import { favoriteMovie } from '@/types/favoriteMovie';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
   const router = useRouter();
@@ -39,7 +39,6 @@ export function MoviesSection({ searchParams }: searchPageParams): JSX.Element {
     genres: [{ id: 0, name: '' }],
   });
   const [favoriteMovies, setFaviriteMovies] = useSaveMoviesInLocalStorage();
-  const queryClient = useQueryClient();
 
   const { data, error, isLoading } = useQuery({
     queryKey: ['movies', searchParams],
