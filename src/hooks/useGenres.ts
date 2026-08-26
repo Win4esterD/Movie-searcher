@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
-import { fetchData } from '@/services';
+import { fetchGenres } from '@/services';
+import type { GenreType } from '@/types/GenreType';
 
-export function useGenres(): Array<{ id: number; name: string }> {
-  const [genres, setGenres] = useState<any>();
-  const genreAPIurl = '/api/genres/';
+import { useQuery } from '@tanstack/react-query';
 
-  useEffect(() => {
-    async function fetching() {
-      const result = await fetchData(genreAPIurl);
-      setGenres(result?.genres);
-    }
 
-    fetching();
-  }, []);
-
-  return genres;
+export function useGenres() {
+  return useQuery({
+    queryKey: ['genres'],
+    queryFn: fetchGenres,
+    select: (data) => data.genres,
+    staleTime: Infinity,
+  });
 }

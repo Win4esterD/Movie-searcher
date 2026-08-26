@@ -22,7 +22,7 @@ export function FavMoviesSection() {
     genres: [{ id: 0, name: '' }],
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const genres = useGenres();
+  const genres = useGenres().data;
   const subarray = paginateArray(favoriteMovies, 4);
 
   return (
@@ -38,7 +38,7 @@ export function FavMoviesSection() {
         {favoriteMovies.length === 0 ? (
           <FavMoviesEmptyState />
         ) : (
-          subarray?.[currentPage - 1]?.map((item) => {
+          genres && subarray?.[currentPage - 1]?.map((item) => {
             return (
               <MovieCard
                 imgLink={item.imgLink}

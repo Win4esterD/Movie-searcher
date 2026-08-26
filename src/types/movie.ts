@@ -1,6 +1,6 @@
 import { video } from './video';
 
-export type movie = {
+export type MovieType = {
   title: string;
   id: number;
   poster_path: string;
@@ -22,4 +22,11 @@ export type productionCompany = {
   logo_path: string;
   name: string;
   origin_country: string;
+};
+
+export type MovieResponseType = {
+  page: number;
+  results: MovieType[];
+  total_pages: number;
+  total_results: number;
 };
